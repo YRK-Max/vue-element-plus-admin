@@ -34,19 +34,15 @@
   </div>
 </template>
 <script setup>
-// eslint-disable-next-line no-unused-vars
-import { Setting, Menu as IconMenu, Location, Document, HomeFilled } from '@element-plus/icons-vue'
-import { useStore } from 'vuex';
-import { useRoute } from 'vue-router';
-import { computed, onMounted } from 'vue';
+  // eslint-disable-next-line no-unused-vars
+  import { Setting, Menu as IconMenu, Location, Document, HomeFilled } from '@element-plus/icons-vue'
+  import { useStore } from 'vuex';
+  import { useRoute } from 'vue-router';
+  import { computed } from 'vue';
 
-const store = useStore();
-const route = useRoute();
-const path = computed(() => route.path)
-
-onMounted(() => {
-  console.log(path.value);
-})
+  const store = useStore();
+  const route = useRoute();
+  const path = computed(() => route.path)
 </script>
 <style lang="scss" scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {

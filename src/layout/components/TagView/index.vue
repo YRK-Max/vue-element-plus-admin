@@ -5,9 +5,12 @@
         <div 
           v-for="(page, index) of store.state.tags.viewdPages"
           :key="index"
-          :class="{ 'active': currentPath === page.name, 'tags-view-item': true }" 
+          :class="{ 'active': currentRouteName === page.name, 'tags-view-item': true }" 
         >
-          <TagItem :page="page" />
+          <router-link :to="page" >
+              {{ page.meta.title }} 
+          </router-link>
+          <i v-if="!page.meta.affix" class="yicon-common yiconcancel ml-1" @click="handleCloseTag(page)"></i>
          </div>
       </div>
     </ScrollPanel>
@@ -17,14 +20,27 @@
   import ScrollPanel from "./ScrollPanel.vue";
   import { useRoute } from "vue-router";
   import { ref, watch } from "@vue/runtime-core";
-  import TagItem from "./TagItem.vue";
   import store from "@/store";
+  import router from "@/router";
 
   const route = useRoute();
-  let currentPath = ref(route.name);
+  let currentRouteName = ref(route.name);
 
   // eslint-disable-next-line no-unused-vars
-  watch(route, (nval, oval) => { currentPath.value = nval.name })
+  watch(route, (nval, oval) => { currentRouteName.value = nval.name })
+
+  function handleCloseTag(close_page) {
+    const viewdPages = store.state.tags.viewdPages
+    store.dispatch('tags/delPageTag', viewdPages.indexOf(close_page)).then(() => {
+      if(isActive(close_page)){
+        router.go(-1)
+      }
+    })
+  }
+
+  function isActive(page) {
+    return page.name === route.name
+  }
 </script>
 <style lang="scss" scoped>
 .tags-view-container {
