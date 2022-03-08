@@ -1,0 +1,151 @@
+@font-face {
+  font-family: "yicon-common"; /* Project id 2583905 */
+  src: url('iconfont.woff2?t=1646633663619') format('woff2'),
+       url('iconfont.woff?t=1646633663619') format('woff'),
+       url('iconfont.ttf?t=1646633663619') format('truetype');
+}
+
+.yicon-common {
+  font-family: "yicon-common" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.yiconcancel:before {
+  content: "\e607";
+}
+
+.yiconcancel1:before {
+  content: "\e698";
+}
+
+.yiconback:before {
+  content: "\e670";
+}
+
+.yiconmonitor:before {
+  content: "\e621";
+}
+
+.yiconplc:before {
+  content: "\ebb6";
+}
+
+.yiconyichangfenxi:before {
+  content: "\e637";
+}
+
+.yiconB1:before {
+  content: "\e6f9";
+}
+
+.yiconhands:before {
+  content: "\e62d";
+}
+
+.yiconhaocai:before {
+  content: "\e6a2";
+}
+
+.yiconjihua:before {
+  content: "\e824";
+}
+
+.yicontubiaozhizuomoban-135:before {
+  content: "\e633";
+}
+
+.yiconbell:before {
+  content: "\e60b";
+}
+
+.yiconfile-unknown:before {
+  content: "\ebb5";
+}
+
+.yiconrole_icon:before {
+  content: "\e606";
+}
+
+.yiconset_configure_hov:before {
+  content: "\e688";
+}
+
+.yiconversions:before {
+  content: "\e62f";
+}
+
+.yiconwulianwang-:before {
+  content: "\e60a";
+}
+
+.yiconprocess:before {
+  content: "\e61c";
+}
+
+.yiconB:before {
+  content: "\e70a";
+}
+
+.yicondowntime:before {
+  content: "\e79a";
+}
+
+.yiconprometheusprometheusjiankongfuwu:before {
+  content: "\e757";
+}
+
+.yicongrafana:before {
+  content: "\ebb0";
+}
+
+.yiconfullScreen:before {
+  content: "\e627";
+}
+
+.yiconsetting:before {
+  content: "\e657";
+}
+
+.yiconwj-qjd:before {
+  content: "\e70e";
+}
+
+.yiconoperation:before {
+  content: "\e681";
+}
+
+.yiconbuka:before {
+  content: "\e6ca";
+}
+
+.yiconjiaban:before {
+  content: "\e64c";
+}
+
+.yiconmaterial:before {
+  content: "\e61d";
+}
+
+.yiconmysql:before {
+  content: "\e667";
+}
+
+.yiconpinzhibaozhengQuality:before {
+  content: "\e632";
+}
+
+.yicon6-ReportFile:before {
+  content: "\e612";
+}
+
+.yiconexcel:before {
+  content: "\e604";
+}
+
+.yiconlanguage:before {
+  content: "\e62a";
+}
+
