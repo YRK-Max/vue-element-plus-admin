@@ -38,7 +38,7 @@
         const viewdPages = store.state.tags.viewdPages
         store.dispatch('tags/delPageTag', viewdPages.indexOf(close_page)).then(() => {
           if(isActive(close_page)){
-            router.go(-1)
+            router.push(viewdPages.slice(-1)[0])
           }
         })
       }
