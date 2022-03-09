@@ -1,7 +1,7 @@
 <template>
   <div class="aside-div">
     <div class="logo-div" :style="{ width: store.state.app.sideCollapse?'64px':'200px' }">
-      <img style="height: 30px;" src="../../assets/images/logo.png" />
+      <img style="height: 30px;" src="@/assets/images/logo.png" />
       <h1 v-if="!store.getters['app/getSideCollapse']">REPORT</h1>
     </div>
     <el-menu
@@ -11,25 +11,12 @@
       background-color="#001529"
       text-color="#f0f0f0"
     >
-      <router-link to="/home">
-        <el-menu-item index="/home">
-          <el-icon><HomeFilled /></el-icon>
-          <template #title>首页</template>
-        </el-menu-item>
-      </router-link>
-      <el-sub-menu index="setting">
-        <template #title>
-          <el-icon><setting /></el-icon>
-          <span>系统设置</span>
-        </template>
-        <router-link to="/system/test">
-          <el-menu-item index="/system/test">
-            <template #title>
-              设置
-            </template>
-          </el-menu-item>
-        </router-link>
-      </el-sub-menu>
+      <SideItem 
+        v-for="(route, index) of constantRoutes" 
+        :key="index" 
+        :route="route" 
+        :basePath="route.path"
+      />
     </el-menu>
   </div>
 </template>
@@ -39,10 +26,12 @@
   import { useStore } from 'vuex';
   import { useRoute } from 'vue-router';
   import { computed } from 'vue';
+  import SideItem from './SideItem';
+  import { constantRoutes } from '@/router';
 
   const store = useStore();
   const route = useRoute();
-  const path = computed(() => route.path)
+  const path = computed(() => route.fullPath)
 </script>
 <style lang="scss" scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {

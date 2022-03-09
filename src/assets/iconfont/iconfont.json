@@ -6,6 +6,20 @@
   "description": "通用图标库",
   "glyphs": [
     {
+      "icon_id": "33519",
+      "name": "home_fill",
+      "font_class": "homefill",
+      "unicode": "e6bb",
+      "unicode_decimal": 59067
+    },
+    {
+      "icon_id": "1350627",
+      "name": "setting",
+      "font_class": "setting1",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
       "icon_id": "458973",
       "name": "cancel",
       "font_class": "cancel",

@@ -12,26 +12,33 @@ export const constantRoutes = [
         path: 'home',
         component: () => import('@/views/Dashboard'),
         name: 'home',
-        meta: { title: 'Home', icon: 'dashboard', affix: true }
+        meta: { title: 'Home', icon: 'yiconhomefill', affix: true }
       }
     ]
   },
   {
     path: '/system',
     component: () => import('@/layout'),
-    redirect: '/test',
+    meta: { title: 'Setting', icon: 'yiconsetting1' },
     children: [
       {
-        path: 'test',
-        name: 'test',
+        path: 'MenuManager',
+        name: 'MenuManager',
         component: () => import('@/views/system/SettingsPage'),
-        meta: { title: 'Setting' }
+        meta: { title: 'MenuManager' }
+      },
+      {
+        path: 'Test',
+        name: 'Test',
+        component: () => import('@/views/system/SettingsPage'),
+        meta: { title: 'Test' }
       }
     ]
   },
   {
     path: '/login',
-    component: () => import('@/views/login')
+    component: () => import('@/views/login'),
+    hidden: true
   }
 ]
 

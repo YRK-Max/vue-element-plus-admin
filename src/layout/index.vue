@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import ASide from "./components/ASide.vue";
+import ASide from "./components/Aside";
 import HeaderLayout from "./components/HeaderLayout";
 import TagView from "./components/TagView/index.vue";
 export default {
