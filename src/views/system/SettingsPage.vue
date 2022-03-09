@@ -1,5 +1,5 @@
 <template>
-  <div />
+  <label>KOKOKOK</label>
 </template>
 <script setup>
 

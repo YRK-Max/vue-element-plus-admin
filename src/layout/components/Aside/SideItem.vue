@@ -2,13 +2,13 @@
   <template v-if="!route.hidden">
     <template v-if="hasOnlyOneShowChild()">
       <router-link :to="oneItem.data" >
-        <el-menu-item :index="getPathIndex(oneItem.data.path)">
+        <el-menu-item :index="oneItem.data.name">
           <el-icon v-if="oneItem.data.meta.icon"><i :class="['yicon-common', oneItem.data.meta.icon]" /></el-icon>
           <template #title>{{ oneItem.data.meta.title || '' }}</template>
         </el-menu-item>
       </router-link>
     </template>
-    <el-sub-menu :index="basePath" v-else>
+    <el-sub-menu :index="route.path" v-else>
       <template #title>
         <el-icon v-if="route.meta.icon"><i :class="['yicon-common', route.meta.icon]" /></el-icon>
         <span>{{ route.meta.title }}</span>
@@ -16,8 +16,7 @@
       <SideItem 
         v-for="(child, index) of route.children" 
         :key="index" 
-        :route="child" 
-        :basePath="resolvePath(child.path)"
+        :route="child"
       />
     </el-sub-menu>
   </template>
@@ -27,10 +26,9 @@ import { defineComponent, reactive } from "@vue/runtime-core";
 
 export default defineComponent({
   name: 'SidebarItem',
-  props: ['route', 'basePath'],
+  props: ['route'],
   setup(props) {
     const route = props.route;
-    const basePath = props.basePath;
     let oneItem = reactive({data: {meta: {title: ''}} });
 
     function hasOnlyOneShowChild() {
@@ -47,22 +45,9 @@ export default defineComponent({
       return false;
     }
 
-    function resolvePath(routePath) {
-      return basePath + '/' + routePath;
-    }
-
-    function getPathIndex(routePath) {
-      if(basePath === '/'){
-        return basePath + routePath;
-      }
-      return basePath;
-    }
-
     return {
       oneItem,
-      hasOnlyOneShowChild,
-      resolvePath,
-      getPathIndex
+      hasOnlyOneShowChild
     }
   }
 })

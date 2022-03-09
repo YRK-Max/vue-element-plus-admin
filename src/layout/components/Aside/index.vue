@@ -5,17 +5,17 @@
       <h1 v-if="!store.getters['app/getSideCollapse']">REPORT</h1>
     </div>
     <el-menu
-      :default-active="path"
-      class="el-menu-vertical-demo"
+      :default-active="routeName"
+      :unique-opened="true"
       :collapse="store.state.app.sideCollapse"
+      class="el-menu-vertical-demo"
       background-color="#001529"
       text-color="#f0f0f0"
     >
       <SideItem 
         v-for="(route, index) of constantRoutes" 
         :key="index" 
-        :route="route" 
-        :basePath="route.path"
+        :route="route"
       />
     </el-menu>
   </div>
@@ -31,7 +31,7 @@
 
   const store = useStore();
   const route = useRoute();
-  const path = computed(() => route.fullPath)
+  const routeName = computed(() => route.name)
 </script>
 <style lang="scss" scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {

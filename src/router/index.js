@@ -17,21 +17,52 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/test',
+    component: () => import('@/layout'),
+    meta: { title: 'Test', icon: 'yiconsetting1' },
+    children: [
+      {
+        path: 'vbgt',
+        name: 'vbgt',
+        component: () => import('@/views/system/SettingsPage'),
+        meta: { title: 'Test' }
+      },
+      {
+        path: 'kudfv',
+        name: 'kudfv',
+        component: () => import('@/views/system/SettingsPage'),
+        meta: { title: 'MenuManager' }
+      },
+      {
+        path: 'juyvd',
+        name: 'juyvd',
+        component: () => import('@/views/system/SettingsPage'),
+        meta: { title: 'MenuManager' }
+      }
+    ]
+  },
+  {
     path: '/system',
     component: () => import('@/layout'),
     meta: { title: 'Setting', icon: 'yiconsetting1' },
     children: [
       {
-        path: 'MenuManager',
-        name: 'MenuManager',
+        path: 'tyuui',
+        name: 'Test',
+        component: () => import('@/views/system/SettingsPage'),
+        meta: { title: 'Test' }
+      },
+      {
+        path: 'rtyui',
+        name: 'rtyui',
         component: () => import('@/views/system/SettingsPage'),
         meta: { title: 'MenuManager' }
       },
       {
-        path: 'Test',
-        name: 'Test',
+        path: 'sdfgh',
+        name: 'sdfgh',
         component: () => import('@/views/system/SettingsPage'),
-        meta: { title: 'Test' }
+        meta: { title: 'MenuManager' }
       }
     ]
   },
