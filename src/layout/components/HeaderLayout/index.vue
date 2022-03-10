@@ -7,6 +7,7 @@
       <Breadcrumb />
     </div>
     <div class="flex text-sm h-full">
+      <LocalePicker />
       <UserDropdown />
     </div>
   </div>
@@ -16,6 +17,7 @@ import { Fold } from '@element-plus/icons-vue'
 import { useStore } from 'vuex'
 import Breadcrumb from './Breadcrumb.vue'
 import UserDropdown from './UserDropdown'
+import LocalePicker from './LocalePicker.vue';
 
 const store = useStore()
 

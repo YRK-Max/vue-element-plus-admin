@@ -6,7 +6,10 @@
     </div>
     <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item @click="handleLogout">退出登录</el-dropdown-item>
+          <el-dropdown-item @click="handleLogout">
+            <i class="yicon-common yiconlogout"></i>
+            {{ $t('logout') }}
+          </el-dropdown-item>
         </el-dropdown-menu>
       </template>
   </el-dropdown>

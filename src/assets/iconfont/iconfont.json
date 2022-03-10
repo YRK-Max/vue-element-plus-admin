@@ -6,6 +6,34 @@
   "description": "通用图标库",
   "glyphs": [
     {
+      "icon_id": "1727563",
+      "name": "327全屏",
+      "font_class": "quanping",
+      "unicode": "e8fa",
+      "unicode_decimal": 59642
+    },
+    {
+      "icon_id": "1727566",
+      "name": "328退出全屏",
+      "font_class": "tuichuquanping",
+      "unicode": "e8fb",
+      "unicode_decimal": 59643
+    },
+    {
+      "icon_id": "5776856",
+      "name": "logout",
+      "font_class": "logout",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    },
+    {
+      "icon_id": "23359065",
+      "name": "翻译",
+      "font_class": "fanyi",
+      "unicode": "e6fb",
+      "unicode_decimal": 59131
+    },
+    {
       "icon_id": "33519",
       "name": "home_fill",
       "font_class": "homefill",
@@ -174,13 +202,6 @@
       "unicode_decimal": 60336
     },
     {
-      "icon_id": "19657959",
-      "name": "屏幕_全屏",
-      "font_class": "fullScreen",
-      "unicode": "e627",
-      "unicode_decimal": 58919
-    },
-    {
       "icon_id": "1207845",
       "name": "setting",
       "font_class": "setting",
@@ -249,13 +270,6 @@
       "font_class": "excel",
       "unicode": "e604",
       "unicode_decimal": 58884
-    },
-    {
-      "icon_id": "16880997",
-      "name": "language",
-      "font_class": "language",
-      "unicode": "e62a",
-      "unicode_decimal": 58922
     }
   ]
 }

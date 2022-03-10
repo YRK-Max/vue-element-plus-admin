@@ -1,5 +1,8 @@
 <template>
   <div class="login relative w-full h-full px-4">
+    <div class="absolute text-white top-4 right-4 enter-x xl:text-gray-600">
+      <LocalePicker />
+    </div>
     <div class="container relative h-full py-2 mx-auto sm:px-10">
       <div class="flex h-full">
         <div class="hidden min-h-full pl-4 mr-4 xl:flex xl:flex-col xl:w-6/12">
@@ -45,6 +48,7 @@
 <script setup>
 import LoginForm from './components/LoginForm.vue';
 import AppLogo from './components/AppLogo.vue';
+import LocalePicker from '@/layout/components/HeaderLayout/LocalePicker.vue';
 
 </script>
 <style lang="scss" scoped>

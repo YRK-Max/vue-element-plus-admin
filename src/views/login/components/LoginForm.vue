@@ -1,6 +1,6 @@
 <template>
   <h2 class="mb-3 ml-3 text-2xl font-bold text-center xl:text-3xl enter-x xl:text-left">
-    用户登录
+    {{ $t('login.title') }}
   </h2>
   <el-form 
     class="p-4 enter-x main-form"
@@ -28,17 +28,17 @@
     <el-row class="enter-x">
       <el-col :span="12">
         <el-form-item>
-          <el-checkbox v-model="rememberMe" label="记住密码"></el-checkbox>
+          <el-checkbox v-model="rememberMe" :label="$t('login.rememberme')"></el-checkbox>
         </el-form-item>
       </el-col>
       <el-col :span="12">
         <el-form-item class="float-right">
-          <el-link type="primary">找回密码</el-link>
+          <el-link type="primary">{{ $t('login.findPwd') }}</el-link>
         </el-form-item>
       </el-col>
     </el-row>
     <el-form-item class="enter-x">
-      <el-button size="large" class="w-full" type="primary" color="#2745b2" @click="handleLogin">登录</el-button>
+      <el-button size="large" class="w-full" type="primary" color="#2745b2" @click="handleLogin">{{ $t('login.loginBtn') }}</el-button>
     </el-form-item>
   </el-form>
 </template>
@@ -46,6 +46,8 @@
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
 import { reactive, ref } from 'vue';
+import { ElNotification } from 'element-plus';
+import { useI18n } from 'vue-i18n';
 import router from '@/router';
 
 const store = useStore();
@@ -55,10 +57,23 @@ const loginParam = reactive({
   password: '123456'
 });
 const rememberMe = ref(false);
+const { t } = useI18n();
 
 function handleLogin() {
-  store.dispatch('user/login', loginParam);
-  router.push(route.query.redirect || '/')
+  store.dispatch('user/login', loginParam).then(() => {
+    router.push(route.query.redirect || '/');
+    ElNotification({
+      title: t('login.success'),
+      message: t('login.welcomBack') + ': ' + loginParam['username'],
+      type: 'success',
+    });
+  }, (error) => {
+    ElNotification({
+      title: t('login.failure'),
+      message: error,
+      type: 'error',
+    });
+  })
 }
 </script>
 <style scoped>
