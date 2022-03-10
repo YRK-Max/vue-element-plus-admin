@@ -14,7 +14,11 @@ import './assets/iconfont/iconfont.css'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
+// 国际化
+import VueI18n from './locales'
+
 const app = createApp(App)
+app.use(VueI18n)
 app.use(ElementPlus)
 app.use(router)
 app.use(store)

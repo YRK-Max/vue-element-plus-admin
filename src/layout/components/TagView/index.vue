@@ -8,7 +8,7 @@
           :class="{ 'active': currentRouteName === page.name, 'tags-view-item': true }" 
         >
           <router-link :to="page" >
-              {{ page.meta.title }} 
+              {{ $t('route.' + page.meta.title) }} 
           </router-link>
           <i v-if="!page.meta.affix" class="yicon-common yiconcancel ml-1" @click="handleCloseTag(page)"></i>
          </div>

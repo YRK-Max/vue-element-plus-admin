@@ -1,7 +1,7 @@
 <template>
   <el-breadcrumb class="ml-4" :separator-icon="ArrowRight">
-    <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>
-    <el-breadcrumb-item v-for="path of pathList" :key="path">{{ path }}</el-breadcrumb-item>
+    <el-breadcrumb-item :to="{ path: '/' }">{{ $t('route.home') }}</el-breadcrumb-item>
+    <el-breadcrumb-item v-for="path of pathList" :key="path">{{ $t('route.' + path) }}</el-breadcrumb-item>
   </el-breadcrumb>
 </template>
 <script setup>

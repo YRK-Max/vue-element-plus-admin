@@ -4,14 +4,14 @@
       <router-link :to="oneItem.data" >
         <el-menu-item :index="oneItem.data.name">
           <el-icon v-if="oneItem.data.meta.icon"><i :class="['yicon-common', oneItem.data.meta.icon]" /></el-icon>
-          <template #title>{{ oneItem.data.meta.title || '' }}</template>
+          <template #title>{{ $t('route.' + oneItem.data.meta.title) || '' }}</template>
         </el-menu-item>
       </router-link>
     </template>
     <el-sub-menu :index="route.path" v-else>
       <template #title>
         <el-icon v-if="route.meta.icon"><i :class="['yicon-common', route.meta.icon]" /></el-icon>
-        <span>{{ route.meta.title }}</span>
+        <span>{{ $t('route.' + route.meta.title) }}</span>
       </template>
       <SideItem 
         v-for="(child, index) of route.children" 
