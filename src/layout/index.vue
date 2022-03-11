@@ -3,7 +3,7 @@
     <el-aside>
       <el-drawer 
         v-if="store.state.app.device === 'mobile'"
-        v-model="store.state.app.sideCollapse"
+        v-model="isCollapse"
         direction="ltr"
         size="200"
         :show-close="false"
@@ -57,7 +57,8 @@ export default {
       const { body } = document
       const drawerVisible = true;
       const WIDTH = 992;
-      const isDesktop = computed(() => store.state.app.device === 'desktop')
+      const isDesktop = computed(() => store.state.app.device === 'desktop');
+      const isCollapse = computed(() => !store.state.app.sideCollapse);
 
       function isMobile() {
         const rect = body.getBoundingClientRect();
@@ -69,13 +70,14 @@ export default {
       }
 
       function handleDrawerClose() {
-        store.dispatch('app/setSideCollapse', false)
+        store.dispatch('app/setSideCollapse', true)
       }
 
       return {
         store,
         drawerVisible,
         isDesktop,
+        isCollapse,
         handleResize,
         handleDrawerClose
       }

@@ -11,7 +11,7 @@
       </el-icon>
       <Breadcrumb v-if="!isMobile" />
     </div>
-    <div class="flex text-sm h-full">
+    <div class="flex text-sm h-full enter-x">
       <FullScreen v-if="!isMobile" />
       <LocalePicker />
       <UserDropdown />
