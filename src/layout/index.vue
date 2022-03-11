@@ -28,7 +28,7 @@
           <el-main>
             <div style="height: 100%; width: 100%; overflow: auto">
               <keep-alive>
-                <router-view />
+                <router-view v-if="isRouterAlive" />
               </keep-alive>
             </div>
           </el-main>
@@ -44,7 +44,7 @@ import HeaderLayout from "./components/HeaderLayout";
 import TagView from "./components/TagView/index.vue";
 import store from "@/store";
 import Aside from "./components/Aside/index.vue";
-import { computed } from '@vue/runtime-core';
+import { computed, nextTick, ref } from '@vue/runtime-core';
 
 export default {
     name: "LayoutIframe",
@@ -53,12 +53,18 @@ export default {
       this.handleResize();
       window.addEventListener('resize', () => { this.handleResize() });
     },
+    provide() {
+      return {
+        reload: this.reload
+      }
+    },
     setup() {
       const { body } = document
       const drawerVisible = true;
       const WIDTH = 992;
       const isDesktop = computed(() => store.state.app.device === 'desktop');
       const isCollapse = computed(() => !store.state.app.sideCollapse);
+      const isRouterAlive = ref(true);
 
       function isMobile() {
         const rect = body.getBoundingClientRect();
@@ -73,13 +79,21 @@ export default {
         store.dispatch('app/setSideCollapse', true)
       }
 
+      async function reload() {
+        isRouterAlive.value = false;
+        await nextTick();
+        isRouterAlive.value = true;
+      }
+
       return {
         store,
         drawerVisible,
         isDesktop,
         isCollapse,
+        isRouterAlive,
         handleResize,
-        handleDrawerClose
+        handleDrawerClose,
+        reload
       }
     }
 }

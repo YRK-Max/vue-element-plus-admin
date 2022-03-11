@@ -1,14 +1,21 @@
 <template>
-  <span class="flex justify-center items-center extra-tab cursor-pointer px-2">
-    <i class="yicon-common yiconshuaxin"/>
+  <span class="flex justify-center items-center extra-tab cursor-pointer px-2" @click="handleRedo">
+    <i class="yicon-common yiconshuaxin" />
   </span>
 </template>
 <script>
 import { defineComponent } from '@vue/runtime-core'
 
 export default defineComponent({
+  inject: ['reload'],
   setup() {
-    
+    function handleRedo() {
+      this.reload();
+    }
+
+    return {
+      handleRedo
+    }
   },
 })
 </script>
