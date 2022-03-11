@@ -1,21 +1,30 @@
 <template>
-  <div class="main-div">
+  <div class="main-div m-3">
+    <el-row class="enter-y" :gutter="6">
+      <el-col :xl="18" :sm="24" :xs="24">
+        <el-row :gutter="6">
+          <el-col v-for="index in 5" class="mb-2" :key="index" :xl="8" :sm="12" :xs="24">
+            <InfoCard />
+          </el-col>
+        </el-row>
+      </el-col>
+      <el-col :xl="6" :sm="24" :xs="24">
+        <el-card>
+          <div class="h-93" />
+        </el-card>
+      </el-col>
+    </el-row>
     <el-row class="enter-y">
-      <el-col :xl="6" :sm="12" :xs="24">
-        <el-card title="设备状态分布">
+      <el-col :span="24">
+        <el-card>
           <template #header>
-            <div class="card-header">
-              <span class="bg-dark-50">Card name</span>
-              <el-button class="button" type="text">Operation button</el-button>
+            <div>
+              <span>流量统计</span>
             </div>
           </template>
-          <el-button type="primary">OK</el-button>
-          <el-input
-            placeholder="请输入内容"
-            maxlength="10"
-            show-word-limit
-          >
-          </el-input>
+          <div class="h-140">
+            <LineChart />
+          </div>
         </el-card>
       </el-col>
     </el-row>
@@ -24,6 +33,8 @@
 
 <script setup>
   import { onMounted } from 'vue'
+  import InfoCard from '@/components/InfoCard.vue';
+  import LineChart from '@/components/charts/LineChart.vue';
 
   onMounted(() => {
     
@@ -31,8 +42,6 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.main-div {
-  margin: 5px;
-}
+<style lang="scss" scoped>
+
 </style>
