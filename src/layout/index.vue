@@ -1,7 +1,20 @@
 <template>
   <el-container class="main-container">
     <el-aside>
-      <ASide />
+      <el-drawer 
+        v-if="store.state.app.device === 'mobile'"
+        v-model="store.state.app.sideCollapse"
+        direction="ltr"
+        size="200"
+        :show-close="false"
+        :with-header="false"
+        :before-close="handleDrawerClose"
+      >
+        <ASide />
+      </el-drawer>
+      <div v-else class="h-full">
+        <Aside />
+      </div>
     </el-aside>
     <el-container>
       <el-header height="48px">
@@ -9,12 +22,14 @@
       </el-header>
       <el-main>
         <el-container class="main-area">
-          <el-header class="page-tag">
+          <el-header v-if="isDesktop" class="page-tag">
             <TagView />
           </el-header>
           <el-main>
             <div style="height: 100%; width: 100%; overflow: auto">
-              <router-view></router-view>
+              <keep-alive>
+                <router-view />
+              </keep-alive>
             </div>
           </el-main>
         </el-container>
@@ -27,9 +42,44 @@
 import ASide from "./components/Aside";
 import HeaderLayout from "./components/HeaderLayout";
 import TagView from "./components/TagView/index.vue";
+import store from "@/store";
+import Aside from "./components/Aside/index.vue";
+import { computed } from '@vue/runtime-core';
+
 export default {
     name: "LayoutIframe",
-    components: { ASide, HeaderLayout, TagView }
+    components: { ASide, HeaderLayout, TagView, Aside },
+    beforeMount() {
+      this.handleResize();
+      window.addEventListener('resize', () => { this.handleResize() });
+    },
+    setup() {
+      const { body } = document
+      const drawerVisible = true;
+      const WIDTH = 992;
+      const isDesktop = computed(() => store.state.app.device === 'desktop')
+
+      function isMobile() {
+        const rect = body.getBoundingClientRect();
+        return rect.width -1 < WIDTH
+      }
+
+      function handleResize() {
+        store.dispatch('app/toggleDevice', isMobile()?'mobile':'desktop')
+      }
+
+      function handleDrawerClose() {
+        store.dispatch('app/setSideCollapse', false)
+      }
+
+      return {
+        store,
+        drawerVisible,
+        isDesktop,
+        handleResize,
+        handleDrawerClose
+      }
+    }
 }
 </script>
 <style lang="scss" scoped>
@@ -46,7 +96,9 @@ export default {
   box-shadow: 0 2px 2px #f0f0f0;
   padding: 0;
 }
-
+.main-container :deep(.el-drawer__body) {
+  padding: 0 !important;
+}
 .main-container :deep(.el-main) {
   padding: 0;
 }

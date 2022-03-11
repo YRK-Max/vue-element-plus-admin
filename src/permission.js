@@ -52,5 +52,8 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach(() => {
+  if(store.state.app.device === 'mobile') {
+    store.dispatch('app/setSideCollapse', false);
+  }
   NProgress.done();
 })

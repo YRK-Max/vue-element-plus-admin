@@ -1,7 +1,7 @@
 <template>
   <div class="main-div">
     <el-row class="enter-y">
-      <el-col :span="6">
+      <el-col :xl="6" :sm="24">
         <el-card title="设备状态分布">
           <template #header>
             <div class="card-header">

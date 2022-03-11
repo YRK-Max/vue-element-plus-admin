@@ -1,13 +1,16 @@
 <template>
   <div class="aside-div">
-    <div class="logo-div" :style="{ width: store.state.app.sideCollapse?'64px':'200px' }">
+    <div 
+      class="logo-div" 
+      :style="{ width: (store.state.app.sideCollapse && !isMobile)?'64px':'200px' }"
+    >
       <img style="height: 30px;" src="@/assets/images/logo.png" />
-      <h1 v-if="!store.getters['app/getSideCollapse']">REPORT</h1>
+      <h1 v-if="!(store.getters['app/getSideCollapse'] && !isMobile)">REPORT</h1>
     </div>
     <el-menu
       :default-active="routeName"
       :unique-opened="true"
-      :collapse="store.state.app.sideCollapse"
+      :collapse="(store.state.app.sideCollapse && !isMobile)"
       class="el-menu-vertical-demo"
       background-color="#001529"
       text-color="#f0f0f0"
@@ -32,6 +35,7 @@
   const store = useStore();
   const route = useRoute();
   const routeName = computed(() => route.name)
+  const isMobile = computed(() => store.state.app.device === 'mobile')
 </script>
 <style lang="scss" scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {
@@ -56,7 +60,6 @@
 
 .aside-div {
   height: 100%;
-  border-right: 1px solid #afafaf;
   background: #001529;
   overflow-x: hidden;
 }
