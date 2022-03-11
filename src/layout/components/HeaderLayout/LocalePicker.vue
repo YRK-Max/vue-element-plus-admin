@@ -1,6 +1,6 @@
 <template>
   <el-dropdown>
-    <div class="flex items-center justify-center h-full px-3 cursor-pointer menu">
+    <div class="flex items-center justify-center h-full px-3 cursor-pointer hover:bg-gray-100">
       <i class="yicon-common yiconfanyi"></i>
     </div>
     <template #dropdown>
@@ -26,12 +26,6 @@ function handleLocaleChange(locale) {
 }
 </script>
 <style lang="scss" scoped>
-.menu {
-  &:hover {
-    background-color: #f0f0f0
-  }
-}
-
 .main-menu :deep(.el-menu-item) {
   height: 35px !important;
   line-height: 35px !important;

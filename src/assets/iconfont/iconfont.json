@@ -6,6 +6,13 @@
   "description": "通用图标库",
   "glyphs": [
     {
+      "icon_id": "6684370",
+      "name": "关于我们",
+      "font_class": "guanyuwomen",
+      "unicode": "e682",
+      "unicode_decimal": 59010
+    },
+    {
       "icon_id": "1245839",
       "name": "向上",
       "font_class": "xiangshang",

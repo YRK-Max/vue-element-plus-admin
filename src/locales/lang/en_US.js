@@ -2,7 +2,9 @@ export default {
   route: {
     home: 'Home',
     setting: 'Setting',
-    profile: 'Profile'
+    profile: 'Profile',
+    selfSetting: 'WorkStation',
+    about: 'About'
   },
   login: {
     title: 'User Login',

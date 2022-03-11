@@ -24,20 +24,26 @@ export const constantRoutes = [
       {
         path: 'profile',
         name: 'profile',
-        component: () => import('@/views/system/SettingsPage'),
+        component: () => import('@/views/system/Profile'),
         meta: { title: 'profile' }
       },
       {
-        path: 'rtyui',
-        name: 'rtyui',
+        path: 'selfSetting',
+        name: 'selfSetting',
         component: () => import('@/views/system/SettingsPage'),
-        meta: { title: 'MenuManager' }
-      },
+        meta: { title: 'selfSetting' }
+      }
+    ]
+  },
+  {
+    path: '/about',
+    component: () => import('@/layout'),
+    children: [
       {
-        path: 'sdfgh',
-        name: 'sdfgh',
-        component: () => import('@/views/system/SettingsPage'),
-        meta: { title: 'MenuManager' }
+        path: 'about',
+        name: 'about',
+        component: () => import('@/views/system/About'),
+        meta: { title: 'about', icon: 'yiconguanyuwomen' }
       }
     ]
   },

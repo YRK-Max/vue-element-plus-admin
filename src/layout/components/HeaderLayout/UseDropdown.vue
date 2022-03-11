@@ -1,6 +1,6 @@
 <template>
   <el-dropdown>
-    <div class="flex items-center justify-center h-full px-3 user-menu">
+    <div class="flex items-center justify-center h-full px-3 hover:bg-gray-100">
       <img style="border-radius: 50%" class="w-[30px] mr-3" src="@/assets/images/avatar.jpg" />
       <label>Admin</label>
     </div>
@@ -41,9 +41,4 @@ function handleLogout() {
 }
 </script>
 <style lang="scss" scoped>
-.user-menu {
-  &:hover {
-    background-color: #f0f0f0
-  }
-}
 </style>

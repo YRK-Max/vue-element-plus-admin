@@ -1,6 +1,6 @@
 <template>
   <el-tooltip content="全屏" placement="bottom">
-    <div class="flex items-center justify-center h-full px-3 cursor-pointer menu" @click="handleFullScreen">
+    <div class="flex items-center justify-center h-full px-3 cursor-pointer hover:bg-gray-100" @click="handleFullScreen">
       <i :class="['yicon-common', isFullscreen?'yicontuichuquanping':'yiconquanping']"></i>
     </div>
   </el-tooltip>
@@ -15,9 +15,5 @@ function handleFullScreen() {
 }
 </script>
 <style lang="scss" scoped>
-.menu {
-  &:hover {
-    background-color: #f0f0f0
-  }
-}
+
 </style>
