@@ -126,6 +126,7 @@ export default {
     padding: 3px 5px;
     display: flex;
     align-items: center;
+    border-bottom: 1px solid #e3e3e3;
   }
 }
 </style>
