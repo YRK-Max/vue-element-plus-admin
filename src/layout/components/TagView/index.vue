@@ -8,23 +8,29 @@
           :class="{ 'active': currentRouteName === page.name, 'tags-view-item': true }" 
         >
           <router-link :to="page" >
-              {{ $t('route.' + page.meta.title) }} 
+              <label style="white-space:nowrap">{{ $t('route.' + page.meta.title) }}</label>
           </router-link>
           <i v-if="!page.meta.affix" class="yicon-common yiconcancel ml-1" @click="handleCloseTag(page)"></i>
          </div>
       </div>
     </ScrollPanel>
   </div>
+  <div class="flex h-full" style="width: 68px">
+    <TabRedo />
+    <TabContent />
+  </div>
 </template>
 <script>
   import ScrollPanel from "./ScrollPanel.vue";
+  import TabRedo from "./components/TabRedo.vue";
+  import TabContent from "./components/TabContent.vue";
   import { useRoute } from "vue-router";
   import { ref, watch, defineComponent } from "@vue/runtime-core";
   import store from "@/store";
   import router from "@/router";
 
   export default defineComponent({
-    components: { ScrollPanel },
+    components: { ScrollPanel, TabRedo, TabContent },
     // eslint-disable-next-line no-unused-vars
     setup() {
       const route = useRoute();
@@ -57,7 +63,7 @@
 </script>
 <style lang="scss" scoped>
 .tags-view-container {
-  width: 100%;
+  width: calc(100% - 68px);
   .tags-view-wrapper {
     .tags-view-div {
       display: flex;

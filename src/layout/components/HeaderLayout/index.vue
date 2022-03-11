@@ -15,6 +15,7 @@
       <FullScreen v-if="!isMobile" />
       <LocalePicker />
       <UserDropdown />
+      <Github />
     </div>
   </div>
 </template>
@@ -26,6 +27,7 @@ import UserDropdown from './UseDropdown.vue'
 import LocalePicker from './LocalePicker.vue';
 import FullScreen from './FullScreen.vue';
 import { computed } from '@vue/runtime-core';
+import Github from './Github.vue';
 
 const state = store.state;
 const isMobile = computed(() => state.app.device === 'mobile')

@@ -1,6 +1,6 @@
 <template>
   <el-tooltip content="全屏" placement="bottom">
-    <div class="flex items-center justify-center h-full px-2 menu" @click="handleFullScreen">
+    <div class="flex items-center justify-center h-full px-3 cursor-pointer menu" @click="handleFullScreen">
       <i :class="['yicon-common', isFullscreen?'yicontuichuquanping':'yiconquanping']"></i>
     </div>
   </el-tooltip>

@@ -6,6 +6,34 @@
   "description": "通用图标库",
   "glyphs": [
     {
+      "icon_id": "1245839",
+      "name": "向上",
+      "font_class": "xiangshang",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "1245840",
+      "name": "向下",
+      "font_class": "xiangxia",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
+    },
+    {
+      "icon_id": "1381385",
+      "name": "github",
+      "font_class": "github",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "4686545",
+      "name": "刷新",
+      "font_class": "shuaxin",
+      "unicode": "ec08",
+      "unicode_decimal": 60424
+    },
+    {
       "icon_id": "1727563",
       "name": "327全屏",
       "font_class": "quanping",
@@ -53,13 +81,6 @@
       "font_class": "cancel",
       "unicode": "e607",
       "unicode_decimal": 58887
-    },
-    {
-      "icon_id": "8106223",
-      "name": "cancel",
-      "font_class": "cancel1",
-      "unicode": "e698",
-      "unicode_decimal": 59032
     },
     {
       "icon_id": "4922508",

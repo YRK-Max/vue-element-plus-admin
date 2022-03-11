@@ -1,6 +1,6 @@
 <template>
   <el-dropdown>
-    <div class="flex items-center justify-center h-full px-2 menu">
+    <div class="flex items-center justify-center h-full px-3 cursor-pointer menu">
       <i class="yicon-common yiconfanyi"></i>
     </div>
     <template #dropdown>
