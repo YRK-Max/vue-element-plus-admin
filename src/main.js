@@ -17,6 +17,9 @@ import 'element-plus/dist/index.css'
 // 国际化
 import VueI18n from './locales'
 
+// 开启mock, 如不需要则删掉此行
+require('./mock');
+
 const app = createApp(App)
 app.use(VueI18n)
 app.use(ElementPlus)

@@ -26,15 +26,14 @@ export const user = {
     login (context, userInfo) {
       return new Promise((resolve, reject) => {
         login(userInfo).then(res => {
-          console.log(res);
+          if(res && res['success']) {
+            context.commit('setUserInfo', userInfo['username']);
+            setToken('admin-token');
+            resolve();
+          }else {
+            reject(res['msg']);
+          }
         })
-        if (userInfo['username'] === 'admin' && userInfo['password'] === '123456') {
-          context.commit('setUserInfo', userInfo['username']);
-          setToken('admin-token');
-          resolve();
-        } else {
-          reject('用户名或密码错误');
-        }
       })
     },
     logout(context) {
