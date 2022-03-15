@@ -1,3 +1,4 @@
+import { login } from "@/api/user"
 import ls from "@/utils/storage"
 import { removeToken, setToken } from "@/utils/token"
 
@@ -24,6 +25,9 @@ export const user = {
     },
     login (context, userInfo) {
       return new Promise((resolve, reject) => {
+        login(userInfo).then(res => {
+          console.log(res);
+        })
         if (userInfo['username'] === 'admin' && userInfo['password'] === '123456') {
           context.commit('setUserInfo', userInfo['username']);
           setToken('admin-token');

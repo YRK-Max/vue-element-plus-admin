@@ -27,9 +27,11 @@
           </el-header>
           <el-main>
             <div style="height: 100%; width: 100%; overflow: auto">
-              <keep-alive>
-                <router-view v-if="isRouterAlive" />
-              </keep-alive>
+              <router-view v-if="isRouterAlive" v-slot="{ Component }">
+                <keep-alive>
+                  <component :is="Component" />
+                </keep-alive>
+              </router-view>
             </div>
           </el-main>
         </el-container>

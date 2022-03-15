@@ -1,21 +1,28 @@
 <template>
   <div class="main-div m-3">
     <el-row class="enter-y" :gutter="6">
-      <el-col :xl="18" :sm="24" :xs="24">
+      <el-col :span="24">
         <el-row :gutter="6">
-          <el-col v-for="index in 5" class="mb-2" :key="index" :xl="8" :sm="12" :xs="24">
+          <el-col v-for="index in 7" class="mb-2" :key="index" :xl="6" :sm="8" :xs="24">
             <InfoCard />
           </el-col>
         </el-row>
       </el-col>
-      <el-col :xl="6" :sm="24" :xs="24">
+    </el-row>
+    <el-row class="enter-y" :gutter="6">
+      <el-col class="mb-2" :xl="8" :xs="24">
         <el-card>
-          <div class="h-93" />
+          <template #header>
+            <div>
+              <span>流量统计</span>
+            </div>
+          </template>
+          <div class="h-140">
+            
+          </div>
         </el-card>
       </el-col>
-    </el-row>
-    <el-row class="enter-y">
-      <el-col :span="24">
+      <el-col :xl="16" :xs="24">
         <el-card>
           <template #header>
             <div>
