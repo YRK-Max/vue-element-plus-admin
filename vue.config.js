@@ -10,7 +10,6 @@ const port = process.env.port || process.env.npm_config_port || 8088
 
 module.exports = defineConfig({
   lintOnSave: false,
-  publicPath: process.env.NODE_ENV === 'development' ? '/' : './',
   transpileDependencies: true,
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
