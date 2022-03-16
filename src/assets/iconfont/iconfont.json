@@ -6,6 +6,34 @@
   "description": "通用图标库",
   "glyphs": [
     {
+      "icon_id": "634357",
+      "name": "电子邮件_email71",
+      "font_class": "dianziyoujianemail711",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    },
+    {
+      "icon_id": "28257659",
+      "name": "bg-warning",
+      "font_class": "bg-warning-copy",
+      "unicode": "ec09",
+      "unicode_decimal": 60425
+    },
+    {
+      "icon_id": "6909287",
+      "name": "收藏",
+      "font_class": "shoucang",
+      "unicode": "e6e7",
+      "unicode_decimal": 59111
+    },
+    {
+      "icon_id": "18368042",
+      "name": "钉钉01",
+      "font_class": "dingding01",
+      "unicode": "e686",
+      "unicode_decimal": 59014
+    },
+    {
       "icon_id": "6684370",
       "name": "关于我们",
       "font_class": "guanyuwomen",

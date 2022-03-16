@@ -1,7 +1,15 @@
 <template>
-  <span class="flex justify-center items-center extra-tab cursor-pointer px-2">
-    <i class="yicon-common yiconxiangxia"/>
-  </span>
+  <el-dropdown>
+    <span class="h-full flex justify-center items-center extra-tab cursor-pointer px-2">
+      <i class="yicon-common yiconxiangxia"/>
+    </span>
+    <template #dropdown>
+      <el-dropdown-menu>
+        <el-dropdown-item>关闭其他页面</el-dropdown-item>
+        <el-dropdown-item>全部关闭</el-dropdown-item>
+      </el-dropdown-menu>
+    </template>
+  </el-dropdown>
 </template>
 <script>
 import { defineComponent } from '@vue/runtime-core'

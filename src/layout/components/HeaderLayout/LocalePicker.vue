@@ -18,7 +18,7 @@
 import i18n from '@/locales';
 import ls from "@/utils/storage"
 
-const defaultLocale = ls.get('locale')
+const defaultLocale = ls.get('locale');
 
 function handleLocaleChange(locale) {
   i18n.global.locale.value = locale;

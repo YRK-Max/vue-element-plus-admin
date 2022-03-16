@@ -12,6 +12,7 @@
       <Breadcrumb v-if="!isMobile" />
     </div>
     <div class="flex text-sm h-full enter-x">
+      <Notification />
       <FullScreen v-if="!isMobile" />
       <LocalePicker />
       <UserDropdown />
@@ -28,6 +29,7 @@ import LocalePicker from './LocalePicker.vue';
 import FullScreen from './FullScreen.vue';
 import { computed } from '@vue/runtime-core';
 import Github from './Github.vue';
+import Notification from './Notification.vue';
 
 const state = store.state;
 const isMobile = computed(() => state.app.device === 'mobile')

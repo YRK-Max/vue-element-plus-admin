@@ -38,7 +38,7 @@
       </el-col>
     </el-row>
     <el-form-item class="enter-x">
-      <el-button size="large" class="w-full" type="primary" color="#2745b2" @click="handleLogin">{{ $t('login.loginBtn') }}</el-button>
+      <el-button :loading="btnLoading" size="large" class="w-full" type="primary" color="#2745b2" @click="handleLogin">{{ $t('login.loginBtn') }}</el-button>
     </el-form-item>
   </el-form>
 </template>
@@ -58,8 +58,10 @@ const loginParam = reactive({
 });
 const rememberMe = ref(false);
 const { t } = useI18n();
+let btnLoading = ref(false);
 
 function handleLogin() {
+  btnLoading.value = true;
   store.dispatch('user/login', loginParam).then(() => {
     router.push(route.query.redirect || '/');
     ElNotification({
@@ -67,12 +69,14 @@ function handleLogin() {
       message: t('login.welcomBack') + ': ' + loginParam['username'],
       type: 'success',
     });
+    btnLoading.value = false;
   }, (error) => {
     ElNotification({
       title: t('login.failure'),
       message: error,
       type: 'error',
     });
+    btnLoading.value = false;
   })
 }
 </script>
