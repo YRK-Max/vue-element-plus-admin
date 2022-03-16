@@ -1,17 +1,25 @@
 <template>
-  <el-card class="mb-1" body-style="width: 250px; height: 80px; padding:3px">
+  <el-card class="mb-1" body-style="width: 280px; height: 85px; padding:3px">
     <el-row class="h-full">
-      <el-col :span="7">
+      <el-col :span="6">
         <div class="h-full flex justify-center items-center">
           <YIcon :icon="getIconByType()" :size="30" />
         </div>
       </el-col>
-      <el-col class="p-2" :span="17">
+      <el-col class="p-2" :span="14">
         <div class="h-3/4">
           <p class="msg-content">{{ content }}</p>
         </div>
         <div class="h-1/4 text-gray-400">
           <label>{{ timekey }}</label>
+        </div>
+      </el-col>
+      <el-col :span="4">
+        <div class="h-full flex justify-center items-center">
+          <el-button type="text" v-if="!alreadyRead" @click="handleClear">
+            <i class="yicon-common yicona-qingchuquanbuyidu"></i>
+          </el-button>
+          <el-tag type='info' size="small" v-if="alreadyRead">已读</el-tag>
         </div>
       </el-col>
     </el-row>
@@ -22,7 +30,7 @@ import { defineComponent } from 'vue'
 import YIcon from '@/components/YIcon.vue'
 
 export default defineComponent({
-    props: ['type', 'content', 'timekey'],
+    props: ['type', 'content', 'timekey', 'alreadyRead'],
     components: { YIcon },
     methods: {
       getIconByType() {
@@ -33,6 +41,15 @@ export default defineComponent({
           case 'favorite': return 'yiconshoucang';
           default: return 'yiconbell';
         }
+      }
+    },
+    setup(props, ctx) {
+      function handleClear() {
+        ctx.emit('clear');
+      }
+
+      return {
+        handleClear
       }
     }
 })

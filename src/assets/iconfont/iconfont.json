@@ -6,6 +6,13 @@
   "description": "通用图标库",
   "glyphs": [
     {
+      "icon_id": "24684551",
+      "name": "清除、全部已读",
+      "font_class": "a-qingchuquanbuyidu",
+      "unicode": "e71c",
+      "unicode_decimal": 59164
+    },
+    {
       "icon_id": "634357",
       "name": "电子邮件_email71",
       "font_class": "dianziyoujianemail711",
