@@ -1,17 +1,19 @@
 <template>
-  <div id="lineChart" class="h-full w-full" />
+  <div :id="id" class="h-full w-full" />
 </template>
 <script>
-import { defineComponent } from "@vue/runtime-core";
+import { defineComponent, nextTick } from "vue";
 import * as echarts from 'echarts';
+import { uuid } from 'vue-uuid'
 
 export default defineComponent({
   mounted() {
     this.initChart();
   },
   setup() {
-    function initChart() {
-      let chart = echarts.init(document.getElementById("lineChart"), "light");
+    const id = uuid.v1();
+    async function initChart() {
+      let chart = echarts.init(document.getElementById(id), "light");
       let option = {
         title: {
           text: 'Rainfall and Flow Relationship',
@@ -151,6 +153,7 @@ export default defineComponent({
           }
         ]
       };
+      await nextTick();
       chart.setOption(option);
       window.addEventListener('resize', () => {
         chart.resize();
@@ -158,6 +161,7 @@ export default defineComponent({
     }
 
     return {
+      id,
       initChart
     }
   },

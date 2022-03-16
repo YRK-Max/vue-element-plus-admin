@@ -20,6 +20,7 @@
     "vue-i18n": "^9.2.0-beta.32",
     "vue-ls": "^4.1.0",
     "vue-router": "^4.0.12",
+    "vue-uuid": "^3.0.0",
     "vuex": "^4.0.2"
   },
   "devDependencies": {

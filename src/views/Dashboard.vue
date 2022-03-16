@@ -18,7 +18,7 @@
             </div>
           </template>
           <div class="h-140">
-            
+            <LineChart ref="chart1" />
           </div>
         </el-card>
       </el-col>
@@ -30,7 +30,7 @@
             </div>
           </template>
           <div class="h-140">
-            <LineChart />
+            <LineChart ref="chart2" />
           </div>
         </el-card>
       </el-col>
