@@ -1,7 +1,7 @@
 # Vue-Element-Plus-Admin
 
 演示地址：https://rongkun.site
-用于学习 Vue3 语法
+用于学习 Vue3 语法，界面仿着vben做的https://github.com/vbenjs/vue-vben-admin
 
 ## Project setup
 
