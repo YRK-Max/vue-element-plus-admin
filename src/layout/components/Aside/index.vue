@@ -16,7 +16,7 @@
       text-color="#f0f0f0"
     >
       <SideItem 
-        v-for="(route, index) of constantRoutes" 
+        v-for="(route, index) of fullRoutes" 
         :key="index" 
         :route="route"
       />
@@ -30,12 +30,13 @@
   import { useRoute } from 'vue-router';
   import { computed } from 'vue';
   import SideItem from './SideItem';
-  import { constantRoutes } from '@/router';
+  // import { constantRoutes } from '@/router';
 
   const store = useStore();
   const route = useRoute();
   const routeName = computed(() => route.name)
   const isMobile = computed(() => store.state.app.device === 'mobile')
+  const fullRoutes = computed(() => store.state.permission.routes)
 </script>
 <style lang="scss" scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {

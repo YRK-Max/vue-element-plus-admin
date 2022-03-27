@@ -1,7 +1,16 @@
 let Login = {
   "code": 0,
+  "success": true
+}
+
+let UserInfo = {
+  "code": 0,
   "success": true,
   "data": {
+    userInfo: {
+      username: 'admin',
+      depart: 'Software'
+    },
     roles: ['admin', 'viewer']
   }
 }
@@ -9,23 +18,35 @@ let Login = {
 let AccessPermissions = [
   {
     path: '/setting',
-    component: () => import('@/layout'),
+    component: 'layout',
     meta: { title: 'setting', icon: 'yiconsetting1' },
     children: [
       {
         path: 'profile',
         name: 'profile',
-        component: () => import('@/views/system/Profile'),
+        component: 'system/Profile',
         meta: { title: 'profile' }
       },
       {
         path: 'selfSetting',
         name: 'selfSetting',
-        component: () => import('@/views/system/SettingsPage'),
+        component: 'system/SettingsPage',
         meta: { title: 'selfSetting' }
       }
     ]
   },
+  {
+    path: '/about',
+    component: 'layout',
+    children: [
+      {
+        path: 'about',
+        name: 'about',
+        component: 'system/About',
+        meta: { title: 'about', icon: 'yiconguanyuwomen' }
+      }
+    ]
+  }
 ]
 
 export default {
@@ -48,19 +69,31 @@ export default {
     }
   },
   /**
-   * 基础 - 登录
+   * 基础 - 获取权限|页面
    * @param： {}    
    * @returns：Promise {<pending>}
    **/
-  'post|getPermissions': option => {
+  'post|getPermissionsByUser': option => {
     const params = JSON.parse(option['body']);
-    if (params['username'] === 'admin') {
+    if (params['roles'].indexOf('admin') > -1) {
       return AccessPermissions
     }else {
       return {
         "code": 500,
         "success": false,
-        "msg": '账号或者密码错误'
+        "msg": '权限获取失败'
+      }
+    }
+  },
+  'post|getUserInfo': option => {
+    const params = JSON.parse(option['body']);
+    if (params['username'] === 'admin') {
+      return UserInfo
+    }else {
+      return {
+        "code": 500,
+        "success": false,
+        "msg": '用户信息获取失败'
       }
     }
   }

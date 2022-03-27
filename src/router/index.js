@@ -17,37 +17,6 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/setting',
-    component: () => import('@/layout'),
-    meta: { title: 'setting', icon: 'yiconsetting1' },
-    children: [
-      {
-        path: 'profile',
-        name: 'profile',
-        component: () => import('@/views/system/Profile'),
-        meta: { title: 'profile' }
-      },
-      {
-        path: 'selfSetting',
-        name: 'selfSetting',
-        component: () => import('@/views/system/SettingsPage'),
-        meta: { title: 'selfSetting' }
-      }
-    ]
-  },
-  {
-    path: '/about',
-    component: () => import('@/layout'),
-    children: [
-      {
-        path: 'about',
-        name: 'about',
-        component: () => import('@/views/system/About'),
-        meta: { title: 'about', icon: 'yiconguanyuwomen' }
-      }
-    ]
-  },
-  {
     path: '/login',
     component: () => import('@/views/login'),
     hidden: true

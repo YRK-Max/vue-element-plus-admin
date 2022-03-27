@@ -1,4 +1,4 @@
-import { login } from "@/api/user"
+import { getUserInfo, login } from "@/api/user"
 import ls from "@/utils/storage"
 import { removeToken, setToken } from "@/utils/token"
 
@@ -7,12 +7,16 @@ export const user = {
   state: () => ({
     userInfo: {
       username: 'default'
-    }
+    },
+    roles: []
   }),
   mutations: {
     setUserInfo(state, info) {
       state.userInfo = info
       ls.set('userInfo', state.userInfo)
+    },
+    setRoles(state, roles) {
+      state.roles = roles
     },
     resetUserInfo(state) {
       state.userInfo = { username: 'default' }
@@ -27,9 +31,24 @@ export const user = {
       return new Promise((resolve, reject) => {
         login(userInfo).then(res => {
           if(res && res['success']) {
-            context.commit('setUserInfo', userInfo['username']);
             setToken('admin-token');
-            resolve();
+            this.dispatch('user/getUserInfo', userInfo).then(({ roles }) => {
+              this.dispatch('permission/generateRoutes', roles);
+              resolve();
+            });
+          }else {
+            reject(res['msg']);
+          }
+        })
+      })
+    },
+    getUserInfo (context, userInfo) {
+      return new Promise((resolve, reject) => {
+        getUserInfo(userInfo).then(res => {
+          if (res && res['success']) {
+            context.commit('setUserInfo', res['data']['userInfo']);
+            context.commit('setRoles', res['data']['roles']);
+            resolve(res['data']);
           }else {
             reject(res['msg']);
           }
