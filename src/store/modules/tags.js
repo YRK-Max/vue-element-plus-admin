@@ -4,16 +4,16 @@ export const tags = {
     viewdPages: []
   }),
   mutations: {
-    addPage (context, page) {
+    addPage (state, page) {
       if (page instanceof Array) {
-        context.viewdPages.push(...page)
+        state.viewdPages.push(...page)
       } else {
-        context.viewdPages.push(page)
+        state.viewdPages.push(page)
       }
     },
-    removePage(context, index) {
+    removePage(state, index) {
       if (index > -1) {
-        context.viewdPages.splice(index, 1)
+        state.viewdPages.splice(index, 1)
       }
     }
   },

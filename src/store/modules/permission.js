@@ -8,8 +8,8 @@ export const permission = {
     routes: []
   }),
   mutations: {
-    SET_ROUTES(context, routes) {
-      context.routes = routes
+    SET_ROUTES(state, routes) {
+      state.routes = routes
     }
   },
   actions: {
