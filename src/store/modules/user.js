@@ -32,8 +32,8 @@ export const user = {
         login(userInfo).then(res => {
           if(res && res['success']) {
             setToken('admin-token');
-            this.dispatch('user/getUserInfo', userInfo).then(({ roles }) => {
-              this.dispatch('permission/generateRoutes', roles);
+            context.dispatch('getUserInfo', userInfo).then(({ roles }) => {
+              context.dispatch('permission/generateRoutes', roles, { root: true });
               resolve();
             });
           }else {

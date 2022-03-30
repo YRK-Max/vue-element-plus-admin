@@ -19,8 +19,7 @@ export const permission = {
       // 404 对应路由必须放在路由表的最下面，所以需要在获取动态路由后添加
       // ‘/:pathMatch(.*)’ vue3中无法直接使用*号
       routes.push({ path: '/:pathMatch(.*)', redirect: '/404', hidden: true });
-      handleRoutes(null, routes);
-      console.log(router.getRoutes());
+      handleRoutes(routes);
       context.commit('SET_ROUTES', constantRoutes.concat(...routes));
     }
   },
@@ -29,11 +28,11 @@ export const permission = {
   }
 }
 
-function handleRoutes (parent, routes) {
+function handleRoutes (routes) {
   routes.forEach(r => {
     let routeStructer = {
       name: r.name || '',
-      path: parent ? parent.path + '/' + r.path : r.path,
+      path: r.path,
       meta: r.meta || {}
     };
     let childs = [];

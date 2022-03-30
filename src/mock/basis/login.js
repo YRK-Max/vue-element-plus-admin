@@ -18,6 +18,7 @@ let UserInfo = {
 let AccessPermissions = [
   {
     path: '/setting',
+    name: 'Setting',
     component: 'layout',
     meta: { title: 'setting', icon: 'yiconsetting1' },
     children: [
@@ -37,11 +38,13 @@ let AccessPermissions = [
   },
   {
     path: '/about',
+    name: 'AboutLayout',
     component: 'layout',
+    redirect: '/about/about',
     children: [
       {
         path: 'about',
-        name: 'about',
+        name: 'About',
         component: 'system/About',
         meta: { title: 'about', icon: 'yiconguanyuwomen' }
       }
