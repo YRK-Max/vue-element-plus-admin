@@ -28,7 +28,9 @@ export const permission = {
   }
 }
 
+// 动态添加路由
 function handleRoutes (routes) {
+  // 处理后端返回的路由表，将所有component变更为相应的具体组件实例
   routes.forEach(r => {
     let routeStructer = {
       name: r.name || '',
