@@ -6,6 +6,13 @@
   "description": "通用图标库",
   "glyphs": [
     {
+      "icon_id": "21823870",
+      "name": "s-fold",
+      "font_class": "s-fold",
+      "unicode": "e676",
+      "unicode_decimal": 58998
+    },
+    {
       "icon_id": "24684551",
       "name": "清除、全部已读",
       "font_class": "a-qingchuquanbuyidu",

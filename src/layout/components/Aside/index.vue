@@ -1,10 +1,13 @@
 <template>
   <div class="aside-div">
-    <div 
-      class="logo-div" 
+    <div
+      class="logo-div"
       :style="{ width: (store.state.app.sideCollapse && !isMobile)?'64px':'200px' }"
     >
-      <img style="height: 30px;" src="@/assets/images/logo.png" />
+      <img
+        style="height: 30px;"
+        src="@/assets/images/logo.png"
+      />
       <h1 v-if="!(store.getters['app/getSideCollapse'] && !isMobile)">REPORT</h1>
     </div>
     <el-menu
@@ -15,28 +18,26 @@
       background-color="#001529"
       text-color="#f0f0f0"
     >
-      <SideItem 
-        v-for="(route, index) of fullRoutes" 
-        :key="index" 
+      <SideItem
+        v-for="(route, index) of fullRoutes"
+        :key="index"
         :route="route"
       />
     </el-menu>
   </div>
 </template>
 <script setup>
-  // eslint-disable-next-line no-unused-vars
-  import { Setting, Menu as IconMenu, Location, Document, HomeFilled } from '@element-plus/icons-vue'
-  import { useStore } from 'vuex';
-  import { useRoute } from 'vue-router';
-  import { computed } from 'vue';
-  import SideItem from './SideItem';
-  // import { constantRoutes } from '@/router';
+import { useStore } from 'vuex';
+import { useRoute } from 'vue-router';
+import { computed } from 'vue';
+import SideItem from './SideItem';
+// import { constantRoutes } from '@/router';
 
-  const store = useStore();
-  const route = useRoute();
-  const routeName = computed(() => route.name)
-  const isMobile = computed(() => store.state.app.device === 'mobile')
-  const fullRoutes = computed(() => store.state.permission.routes)
+const store = useStore();
+const route = useRoute();
+const routeName = computed(() => route.name)
+const isMobile = computed(() => store.state.app.device === 'mobile')
+const fullRoutes = computed(() => store.state.permission.routes)
 </script>
 <style lang="scss" scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {

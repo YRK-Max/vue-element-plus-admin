@@ -28,16 +28,7 @@
         :xl="8"
         :xs="24"
       >
-        <el-card>
-          <template #header>
-            <div>
-              <span>流量统计</span>
-            </div>
-          </template>
-          <div class="h-140">
-            <LineChart ref="chart1" />
-          </div>
-        </el-card>
+        <TodoList />
       </el-col>
       <el-col
         :xl="16"
@@ -61,11 +52,13 @@
 <script>
 import InfoCard from '@/components/InfoCard.vue';
 import LineChart from '@/components/charts/LineChart.vue';
+import TodoList from '@/components/TodoList'
 
 export default {
   components: {
     InfoCard,
-    LineChart
+    LineChart,
+    TodoList
   },
   mounted () {
     console.log(this);
