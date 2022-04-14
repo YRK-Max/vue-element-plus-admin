@@ -1,14 +1,16 @@
 <template>
   <div class="main-div">
     <div class="flex items-center -enter-x">
-      <el-icon
+      <div
         class="collapse-btn ml-2"
-        :size="20"
         :style="{ transform: state.app.sideCollapse?'rotateY(-180deg)':'rotateY(0deg)'}"
-        @click="FoldControl"
       >
-        <i class="yicon-common yicons-fold"></i>
-      </el-icon>
+        <YIcon
+          icon="yicons-fold"
+          :size="20"
+          @click="FoldControl"
+        />
+      </div>
       <Breadcrumb v-if="!isMobile" />
     </div>
     <div class="flex text-sm h-full enter-x">
@@ -29,6 +31,7 @@ import FullScreen from './FullScreen.vue';
 import { computed } from '@vue/runtime-core';
 import Github from './Github.vue';
 import Notification from './Notification.vue';
+import YIcon from '@/components/YIcon.vue'
 
 const state = store.state;
 const isMobile = computed(() => state.app.device === 'mobile')
@@ -46,10 +49,5 @@ function FoldControl () {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.collapse-btn {
-  cursor: pointer;
-  transition: all 0.4s;
 }
 </style>

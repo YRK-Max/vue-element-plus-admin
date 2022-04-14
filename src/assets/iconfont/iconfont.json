@@ -6,6 +6,97 @@
   "description": "通用图标库",
   "glyphs": [
     {
+      "icon_id": "836678",
+      "name": "image",
+      "font_class": "image",
+      "unicode": "e746",
+      "unicode_decimal": 59206
+    },
+    {
+      "icon_id": "1567519",
+      "name": "drop",
+      "font_class": "drop",
+      "unicode": "e658",
+      "unicode_decimal": 58968
+    },
+    {
+      "icon_id": "7852055",
+      "name": "running",
+      "font_class": "running",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "9456822",
+      "name": "md-snow",
+      "font_class": "md-snow",
+      "unicode": "e6c9",
+      "unicode_decimal": 59081
+    },
+    {
+      "icon_id": "10331563",
+      "name": "sun",
+      "font_class": "sun",
+      "unicode": "e6a3",
+      "unicode_decimal": 59043
+    },
+    {
+      "icon_id": "27434209",
+      "name": "about_关于",
+      "font_class": "about_guanyu",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "27434227",
+      "name": "bank_card_银行卡",
+      "font_class": "bank_card_yinhangka",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "27434240",
+      "name": "safety_安全",
+      "font_class": "safety_anquan",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "27438458",
+      "name": "download_下载",
+      "font_class": "download_xiazai",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "27438459",
+      "name": "collection_收藏",
+      "font_class": "collection_shoucang",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "27438460",
+      "name": "address_地址",
+      "font_class": "address_dizhi",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "27438461",
+      "name": "order_订单",
+      "font_class": "order_dingdan",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "27591210",
+      "name": "Sign_签到",
+      "font_class": "Sign_qiandao",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
       "icon_id": "21823870",
       "name": "s-fold",
       "font_class": "s-fold",
