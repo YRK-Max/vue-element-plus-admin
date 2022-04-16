@@ -1,16 +1,13 @@
 <template>
   <div class="main-div">
     <div class="flex items-center -enter-x">
-      <div
+      <YIcon
+        icon="yicons-fold"
         class="collapse-btn ml-2"
+        :size="20"
         :style="{ transform: state.app.sideCollapse?'rotateY(-180deg)':'rotateY(0deg)'}"
-      >
-        <YIcon
-          icon="yicons-fold"
-          :size="20"
-          @click="FoldControl"
-        />
-      </div>
+        @click="FoldControl"
+      />
       <Breadcrumb v-if="!isMobile" />
     </div>
     <div class="flex text-sm h-full enter-x">

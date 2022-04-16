@@ -1,21 +1,23 @@
 <template>
-  <svg
-    v-if="isColorFul"
-    class="icon"
-    :style="{ width: size + 'px', height: size + 'px' }"
-    aria-hidden="true"
-  >
-    <use :xlink:href="'#' + icon"></use>
-  </svg>
-  <div
-    v-if="!isColorFul"
-    class="collapse-btn"
-    @click="handleClick"
-  >
-    <i
-      :class="notColorFulIconClass"
-      :style="{ fontSize: size + 'px', color: color }"
-    />
+  <div>
+    <svg
+      v-if="isColorFul"
+      class="icon"
+      :style="{ width: size + 'px', height: size + 'px' }"
+      aria-hidden="true"
+    >
+      <use :xlink:href="'#' + icon"></use>
+    </svg>
+    <div
+      v-if="!isColorFul"
+      class="collapse-btn"
+      @click="handleClick"
+    >
+      <i
+        :class="notColorFulIconClass"
+        :style="{ fontSize: size + 'px', color: color }"
+      />
+    </div>
   </div>
 </template>
 <script>

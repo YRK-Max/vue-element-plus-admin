@@ -4,7 +4,9 @@ export default {
     setting: '系统设置',
     profile: '个人中心',
     selfSetting: '个人设置',
-    about: '关于'
+    about: '关于',
+    editor: 'Layout 设计',
+    layoutEditor: 'Layout 设计'
   },
   login: {
     title: '用户登录',

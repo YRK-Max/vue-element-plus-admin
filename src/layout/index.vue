@@ -1,7 +1,7 @@
 <template>
   <el-container class="main-container">
     <el-aside>
-      <el-drawer 
+      <el-drawer
         v-if="store.state.app.device === 'mobile'"
         v-model="isCollapse"
         direction="ltr"
@@ -12,7 +12,10 @@
       >
         <ASide />
       </el-drawer>
-      <div v-else class="h-full">
+      <div
+        v-else
+        class="h-full"
+      >
         <Aside />
       </div>
     </el-aside>
@@ -22,12 +25,18 @@
       </el-header>
       <el-main>
         <el-container class="main-area">
-          <el-header v-if="isDesktop" class="page-tag">
+          <el-header
+            v-if="isDesktop"
+            class="page-tag"
+          >
             <TagView />
           </el-header>
           <el-main>
             <div style="height: 100%; width: 100%; overflow: auto">
-              <router-view v-if="isRouterAlive" v-slot="{ Component }">
+              <router-view
+                v-if="isRouterAlive"
+                v-slot="{ Component }"
+              >
                 <keep-alive>
                   <component :is="Component" />
                 </keep-alive>
@@ -49,55 +58,55 @@ import Aside from "./components/Aside/index.vue";
 import { computed, nextTick, ref } from '@vue/runtime-core';
 
 export default {
-    name: "LayoutIframe",
-    components: { ASide, HeaderLayout, TagView, Aside },
-    beforeMount() {
-      this.handleResize();
-      window.addEventListener('resize', () => { this.handleResize() });
-    },
-    provide() {
-      return {
-        reload: this.reload
-      }
-    },
-    setup() {
-      const { body } = document
-      const drawerVisible = true;
-      const WIDTH = 992;
-      const isDesktop = computed(() => store.state.app.device === 'desktop');
-      const isCollapse = computed(() => !store.state.app.sideCollapse);
-      const isRouterAlive = ref(true);
-
-      function isMobile() {
-        const rect = body.getBoundingClientRect();
-        return rect.width -1 < WIDTH
-      }
-
-      function handleResize() {
-        store.dispatch('app/toggleDevice', isMobile()?'mobile':'desktop')
-      }
-
-      function handleDrawerClose() {
-        store.dispatch('app/setSideCollapse', true)
-      }
-
-      async function reload() {
-        isRouterAlive.value = false;
-        await nextTick();
-        isRouterAlive.value = true;
-      }
-
-      return {
-        store,
-        drawerVisible,
-        isDesktop,
-        isCollapse,
-        isRouterAlive,
-        handleResize,
-        handleDrawerClose,
-        reload
-      }
+  name: "LayoutIframe",
+  components: { ASide, HeaderLayout, TagView, Aside },
+  beforeMount () {
+    this.handleResize();
+    window.addEventListener('resize', () => { this.handleResize() });
+  },
+  provide () {
+    return {
+      reload: this.reload
     }
+  },
+  setup () {
+    const { body } = document
+    const drawerVisible = true;
+    const WIDTH = 992;
+    const isDesktop = computed(() => store.state.app.device === 'desktop');
+    const isCollapse = computed(() => !store.state.app.sideCollapse);
+    const isRouterAlive = ref(true);
+
+    function isMobile () {
+      const rect = body.getBoundingClientRect();
+      return rect.width - 1 < WIDTH
+    }
+
+    function handleResize () {
+      store.dispatch('app/toggleDevice', isMobile() ? 'mobile' : 'desktop')
+    }
+
+    function handleDrawerClose () {
+      store.dispatch('app/setSideCollapse', true)
+    }
+
+    async function reload () {
+      isRouterAlive.value = false;
+      await nextTick();
+      isRouterAlive.value = true;
+    }
+
+    return {
+      store,
+      drawerVisible,
+      isDesktop,
+      isCollapse,
+      isRouterAlive,
+      handleResize,
+      handleDrawerClose,
+      reload
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -124,7 +133,7 @@ export default {
 .main-area {
   height: 100%;
   .page-tag {
-    height: 34px;
+    height: 30px;
     padding: 3px 5px;
     display: flex;
     align-items: center;

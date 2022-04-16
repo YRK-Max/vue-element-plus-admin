@@ -17,6 +17,20 @@ let UserInfo = {
 
 let AccessPermissions = [
   {
+    path: '/editor',
+    name: 'LayoutEditorLayout',
+    component: 'layout',
+    redirect: '/editor/editor',
+    children: [
+      {
+        path: 'editor',
+        name: 'LayoutEditor',
+        component: 'modules/LayoutEditor',
+        meta: { title: 'layoutEditor', icon: 'yiconeditor' }
+      }
+    ]
+  },
+  {
     path: '/setting',
     name: 'Setting',
     component: 'layout',

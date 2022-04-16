@@ -2,64 +2,71 @@
   <div class="tags-view-container">
     <ScrollPanel class="tags-view-wrapper">
       <div class="tags-view-div">
-        <div 
+        <div
           v-for="(page, index) of state.tags.viewdPages"
           :key="index"
-          :class="{ 'active': currentRouteName === page.name, 'tags-view-item': true }" 
+          :class="{ 'active': currentRouteName === page.name, 'tags-view-item': true }"
         >
-          <router-link :to="page" >
-              <label style="white-space:nowrap">{{ $t('route.' + page.meta.title) }}</label>
+          <router-link :to="page">
+            <label style="white-space:nowrap; cursor: pointer">{{ $t('route.' + page.meta.title) }}</label>
           </router-link>
-          <i v-if="!page.meta.affix" class="yicon-common yiconcancel ml-1" @click="handleCloseTag(page)"></i>
-         </div>
+          <i
+            v-if="!page.meta.affix"
+            class="yicon-common yiconcancel ml-1"
+            @click="handleCloseTag(page)"
+          ></i>
+        </div>
       </div>
     </ScrollPanel>
   </div>
-  <div class="flex h-full" style="width: 68px">
+  <div
+    class="flex h-full"
+    style="width: 68px"
+  >
     <TabRedo />
     <TabContent />
   </div>
 </template>
 <script>
-  import ScrollPanel from "./ScrollPanel.vue";
-  import TabRedo from "./components/TabRedo.vue";
-  import TabContent from "./components/TabContent.vue";
-  import { useRoute } from "vue-router";
-  import { ref, watch, defineComponent } from "@vue/runtime-core";
-  import store from "@/store";
-  import router from "@/router";
+import ScrollPanel from "./ScrollPanel.vue";
+import TabRedo from "./components/TabRedo.vue";
+import TabContent from "./components/TabContent.vue";
+import { useRoute } from "vue-router";
+import { ref, watch, defineComponent } from "@vue/runtime-core";
+import store from "@/store";
+import router from "@/router";
 
-  export default defineComponent({
-    components: { ScrollPanel, TabRedo, TabContent },
+export default defineComponent({
+  components: { ScrollPanel, TabRedo, TabContent },
+  // eslint-disable-next-line no-unused-vars
+  setup () {
+    const route = useRoute();
+    const state = store.state;
+    let currentRouteName = ref(route.name);
+
     // eslint-disable-next-line no-unused-vars
-    setup() {
-      const route = useRoute();
-      const state = store.state;
-      let currentRouteName = ref(route.name);
+    watch(route, (nval, oval) => { currentRouteName.value = nval.name })
 
-      // eslint-disable-next-line no-unused-vars
-      watch(route, (nval, oval) => { currentRouteName.value = nval.name })
-
-      function handleCloseTag(close_page) {
-        const viewdPages = store.state.tags.viewdPages
-        store.dispatch('tags/delPageTag', viewdPages.indexOf(close_page)).then(() => {
-          if(isActive(close_page)){
-            router.push(viewdPages.slice(-1)[0])
-          }
-        })
-      }
-
-      function isActive(page) {
-        return page.name === route.name
-      }
-
-      return {
-        state,
-        currentRouteName,
-        handleCloseTag
-      }
+    function handleCloseTag (close_page) {
+      const viewdPages = store.state.tags.viewdPages
+      store.dispatch('tags/delPageTag', viewdPages.indexOf(close_page)).then(() => {
+        if (isActive(close_page)) {
+          router.push(viewdPages.slice(-1)[0])
+        }
+      })
     }
-  })
+
+    function isActive (page) {
+      return page.name === route.name
+    }
+
+    return {
+      state,
+      currentRouteName,
+      handleCloseTag
+    }
+  }
+})
 </script>
 <style lang="scss" scoped>
 .tags-view-container {
@@ -68,7 +75,6 @@
     .tags-view-div {
       display: flex;
       .tags-view-item {
-        cursor: pointer;
         display: flex;
         align-items: center;
         height: 25px;

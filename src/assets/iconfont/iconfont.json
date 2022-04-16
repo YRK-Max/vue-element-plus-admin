@@ -6,6 +6,27 @@
   "description": "通用图标库",
   "glyphs": [
     {
+      "icon_id": "650805",
+      "name": "问号",
+      "font_class": "wenhao",
+      "unicode": "e64e",
+      "unicode_decimal": 58958
+    },
+    {
+      "icon_id": "10273624",
+      "name": "loading",
+      "font_class": "loading",
+      "unicode": "e891",
+      "unicode_decimal": 59537
+    },
+    {
+      "icon_id": "11940429",
+      "name": "editor",
+      "font_class": "editor",
+      "unicode": "e6df",
+      "unicode_decimal": 59103
+    },
+    {
       "icon_id": "836678",
       "name": "image",
       "font_class": "image",
