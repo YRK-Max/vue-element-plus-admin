@@ -47,6 +47,13 @@
             show-input
           />
         </el-form-item>
+        <el-form-item label="Rotate">
+          <el-slider
+            v-model="selectedSvgInfo.angle"
+            :max="360"
+            show-input
+          />
+        </el-form-item>
         <el-form-item label="Position">
           <el-radio-group
             v-model="selectedSvgInfo.zIndex"

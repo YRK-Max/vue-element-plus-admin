@@ -18,7 +18,7 @@
       @mousemove="mouseMove"
       @mouseup="mouseupCanvas"
       @mousewheel="mouseWheel"
-      @dblclick="dblClick"
+      @mousedown="canvasMouseDown"
     >
       <el-button-group class="export-button-group">
         <el-button @click="exportData('SVG')">SVG</el-button>
@@ -62,7 +62,7 @@
     title="Help"
   >
     <ul>
-      <li>Ctrl + Shift + c: 复制</li>
+      <li>Ctrl + Alt + c: 复制</li>
       <li>Delete: 删除</li>
       <li>Ctrl + 鼠标滚动: 调节选中元素宽度</li>
       <li>鼠标滚动: 调节选中元素高度</li>
@@ -134,8 +134,8 @@ export default {
         event.preventDefault();
         selectSvgInfo.svgPositionY += 1;
       }
-      // Ctrl + Shift + c 复制
-      else if (event && event.ctrlKey && event.key == "C") {
+      // Ctrl + Alt + c 复制
+      else if (event && event.ctrlKey && event.altKey && event.key == "c") {
         event.preventDefault();
         let copySvgInfoStr = JSON.stringify(selectSvgInfo);
         let copySvgInfo = JSON.parse(copySvgInfoStr);
@@ -206,6 +206,22 @@ export default {
           setTimeout(function () {
             _this.changeSelectedItem(svgItem.id);
           }, 100)
+
+          global.CurrentlyObj = {
+            title: '',
+            type: '',
+            color: '',
+            height: 40,
+            width: 200,
+            fontSize: 14,
+            strokeWidth: 2,
+            strokeColor: '#ffffff',
+            imageSrc: '',
+            text: '',
+            lockwh: true,
+            angle: 0,
+            zIndex: 1
+          };
         })
       }, 300)
     })
@@ -213,21 +229,17 @@ export default {
   methods: {
     mouseWheel (event) {
       //获取当前选中组件
-      let selectSvgInfo = this.selectedItem;
-      if (selectSvgInfo == undefined || selectSvgInfo == null || selectSvgInfo == '') {
-        return;
-      }
       event.preventDefault();
+      let selectSvgInfo = this.selectedItem;
       //判断滚轮方向 -100是往上滑 100是下滑
-      let svgZoom = event.wheelDelta > 0 ? "2" : "-2";
-
+      let svgItemZoom = event.wheelDelta > 0 ? "2" : "-2";
       if (event.ctrlKey) {
-        selectSvgInfo.width = parseInt(selectSvgInfo.width) + parseInt(svgZoom);
+        selectSvgInfo.width = parseInt(selectSvgInfo.width) + parseInt(svgItemZoom);
         if (selectSvgInfo.width < 1) {
           selectSvgInfo.width = 1;
         }
       } else {
-        selectSvgInfo.height = parseInt(selectSvgInfo.height) + parseInt(svgZoom);
+        selectSvgInfo.height = parseInt(selectSvgInfo.height) + parseInt(svgItemZoom);
         if (selectSvgInfo.height < 1) {
           selectSvgInfo.height = 1;
         }
@@ -265,6 +277,7 @@ export default {
       }
     },
     mousedownSvg (event, id, index) {
+      event.stopPropagation();
       //从数组里面根据index找到当前元素
       this.moveSvg.id = id;
       this.moveSvg.index = index;
@@ -276,7 +289,8 @@ export default {
       // 添加选中
       this.changeSelectedItem(id);
     },
-    dblClick () {
+    canvasMouseDown (event) {
+      event.preventDefault();
       //获取所有g标签 清除所有选中样式
       let gAnyList = document.querySelectorAll('g');
       gAnyList.forEach(g => {
@@ -328,6 +342,8 @@ export default {
 .main-container {
   height: 100%;
   width: 100%;
+  padding: 5px;
+  background: #444f5a;
   display: flex;
   .editor-content {
     width: calc(75% - 8px);
@@ -380,6 +396,7 @@ export default {
 
 .topo-layer-view-selected {
   outline: 2px dashed rgb(0, 140, 255);
+  outline-offset: 5px;
 }
 
 @keyframes loadingRotate {

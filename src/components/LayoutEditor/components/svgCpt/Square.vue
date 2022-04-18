@@ -11,6 +11,8 @@
       :fill='objProperty.color'
       :width="objProperty.width"
       :height="objProperty.height"
+      :x="-objProperty.width/2"
+      :y="-objProperty.height/2"
     />
   </g>
 </template>
