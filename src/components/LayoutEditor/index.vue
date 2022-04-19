@@ -31,19 +31,22 @@
         :size="20"
         @click="showHelp = true"
       />
-      <svg
-        id="main_svg"
-        style="height: 100%; width: 100%;"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-      >
-        <SvgComponent
-          v-for="(svgItem, index) in svgList"
-          :key="svgItem.id"
-          :objProperty="svgItem"
-          @mousedown="mousedownSvg($event, svgItem.id, index)"
-        />
-      </svg>
+      <div class="svg-container">
+        <svg
+          id="main_svg"
+          style="width: 1920px; height: 1080px;"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          :viewBox="svgControl.x + ' ' + svgControl.y + ' ' + svgControl.width + ' ' + svgControl.height"
+        >
+          <SvgComponent
+            v-for="(svgItem, index) in svgList"
+            :key="svgItem.id"
+            :objProperty="svgItem"
+            @mousedown="mousedownSvg($event, svgItem.id, index)"
+          />
+        </svg>
+      </div>
     </div>
     <div
       v-if="!loading"
@@ -108,6 +111,14 @@ export default {
       offsetPosition: {
         positionX: 0,
         positionY: 0
+      },
+      svgControl: {
+        x: 0,
+        y: 0,
+        height: 1080,
+        width: 1920,
+        sheight: 1080,
+        swidth: 1920
       }
     }
   },
@@ -229,19 +240,36 @@ export default {
   methods: {
     mouseWheel (event) {
       //获取当前选中组件
-      event.preventDefault();
       let selectSvgInfo = this.selectedItem;
-      //判断滚轮方向 -100是往上滑 100是下滑
-      let svgItemZoom = event.wheelDelta > 0 ? "2" : "-2";
-      if (event.ctrlKey) {
-        selectSvgInfo.width = parseInt(selectSvgInfo.width) + parseInt(svgItemZoom);
-        if (selectSvgInfo.width < 1) {
-          selectSvgInfo.width = 1;
+      if (selectSvgInfo == undefined || selectSvgInfo == null || selectSvgInfo == '') {
+        if (!event.ctrlKey) {
+          return;
         }
+        event.preventDefault();
+        let svgZoom = event.wheelDelta > 0 ? 15 : -15;
+        this.svgControl.height - svgZoom > 0 ? this.svgControl.height -= svgZoom : 400;
+        this.svgControl.width - svgZoom > 0 ? this.svgControl.width -= svgZoom : 400;
+        let mousePositionX = event.offsetX;
+        let mousePositionY = event.offsetY;
+        let zoomOfx = this.svgControl.width / this.svgControl.swidth;
+        let zoomOfy = this.svgControl.height / this.svgControl.sheight;
+        console.log(this.svgControl.width / this.svgControl.swidth);
+        this.svgControl.x = (1 - zoomOfx) * mousePositionX;
+        this.svgControl.y = (1 - zoomOfy) * mousePositionY;
       } else {
-        selectSvgInfo.height = parseInt(selectSvgInfo.height) + parseInt(svgItemZoom);
-        if (selectSvgInfo.height < 1) {
-          selectSvgInfo.height = 1;
+        event.preventDefault();
+        //判断滚轮方向 -100是往上滑 100是下滑
+        let svgItemZoom = event.wheelDelta > 0 ? "2" : "-2";
+        if (event.ctrlKey) {
+          selectSvgInfo.width = parseInt(selectSvgInfo.width) + parseInt(svgItemZoom);
+          if (selectSvgInfo.width < 1) {
+            selectSvgInfo.width = 1;
+          }
+        } else {
+          selectSvgInfo.height = parseInt(selectSvgInfo.height) + parseInt(svgItemZoom);
+          if (selectSvgInfo.height < 1) {
+            selectSvgInfo.height = 1;
+          }
         }
       }
     },
@@ -397,6 +425,25 @@ export default {
 .topo-layer-view-selected {
   outline: 2px dashed rgb(0, 140, 255);
   outline-offset: 5px;
+}
+
+.svg-container {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.svg-container::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+.svg-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.svg-container::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.5);
+  border-radius: 20px;
+  border: transparent;
 }
 
 @keyframes loadingRotate {
