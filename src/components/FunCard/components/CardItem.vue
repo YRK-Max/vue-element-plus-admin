@@ -74,7 +74,7 @@ export default {
   left: 50%;
   top: 85%;
   transform: translate(-50%, 0);
-  transition: all 0.5s;
+  transition: all 0.5s cubic-bezier(0.83, 0, 0.17, 1);
   display: flex;
   justify-content: center;
   align-items: center;

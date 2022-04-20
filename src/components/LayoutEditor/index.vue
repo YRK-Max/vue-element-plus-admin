@@ -69,6 +69,7 @@
       <li>Delete: 删除</li>
       <li>Ctrl + 鼠标滚动: 调节选中元素宽度</li>
       <li>鼠标滚动: 调节选中元素高度</li>
+      <li>画布空白处点击，按住ctrl滚动滑轮: 缩放整个svg图</li>
     </ul>
   </el-dialog>
 </template>
@@ -246,14 +247,14 @@ export default {
           return;
         }
         event.preventDefault();
-        let svgZoom = event.wheelDelta > 0 ? 15 : -15;
-        this.svgControl.height - svgZoom > 0 ? this.svgControl.height -= svgZoom : 400;
-        this.svgControl.width - svgZoom > 0 ? this.svgControl.width -= svgZoom : 400;
+        let svgZoomHeight = event.wheelDelta > 0 ? 10.8 : -10.8;
+        let svgZoomWidth = event.wheelDelta > 0 ? 19.2 : -19.2;
+        this.svgControl.height - svgZoomHeight > 0 ? this.svgControl.height -= svgZoomHeight : 400;
+        this.svgControl.width - svgZoomWidth > 0 ? this.svgControl.width -= svgZoomWidth : 400;
         let mousePositionX = event.offsetX;
         let mousePositionY = event.offsetY;
         let zoomOfx = this.svgControl.width / this.svgControl.swidth;
         let zoomOfy = this.svgControl.height / this.svgControl.sheight;
-        console.log(this.svgControl.width / this.svgControl.swidth);
         this.svgControl.x = (1 - zoomOfx) * mousePositionX;
         this.svgControl.y = (1 - zoomOfy) * mousePositionY;
       } else {
@@ -289,10 +290,19 @@ export default {
 
       let mousePositionX = event.offsetX;
       let mousePositionY = event.offsetY;
+      let zoomOfx = this.svgControl.width / this.svgControl.swidth;
+      let zoomOfy = this.svgControl.height / this.svgControl.sheight;
 
       //将要移动的元素坐标设备为鼠标坐标
       let svgPositionX = mousePositionX + this.offsetPosition.positionX;
       let svgPositionY = mousePositionY + this.offsetPosition.positionY;
+
+      console.log('mx: ' + mousePositionX + ', my: ' + mousePositionY);
+      console.log('sx: ' + this.svgList[this.moveSvg.index].svgPositionX + ', sy: ' + this.svgList[this.moveSvg.index].svgPositionY);
+      console.log('ox: ' + this.offsetPosition.positionX + ', oy: ' + this.offsetPosition.positionY);
+      console.log('zx: ' + zoomOfx+ ', zy: ' + zoomOfy);
+      console.log('rx: ' + svgPositionX+ ', ry: ' + svgPositionY);
+      console.log('--------------------------------------------------------------------------------');
 
       this.svgList[this.moveSvg.index].svgPositionX = svgPositionX;
       this.svgList[this.moveSvg.index].svgPositionY = svgPositionY;
@@ -444,6 +454,10 @@ export default {
   background-color: rgba(155, 155, 155, 0.5);
   border-radius: 20px;
   border: transparent;
+
+  &:hover {
+    background-color: #929292;
+  }
 }
 
 @keyframes loadingRotate {
