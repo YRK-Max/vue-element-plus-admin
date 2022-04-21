@@ -2,7 +2,7 @@
   <el-container class="main-container">
     <el-aside>
       <el-drawer
-        v-if="store.state.app.device === 'mobile'"
+        v-if="!isDesktop"
         v-model="isCollapse"
         direction="ltr"
         size="200"

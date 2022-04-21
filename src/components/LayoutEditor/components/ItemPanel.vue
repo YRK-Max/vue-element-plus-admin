@@ -72,6 +72,20 @@ export default {
               lockwh: true,
               angle: 0,
               zIndex: 1
+            },
+            {
+              title: '线',
+              type: 'Line',
+              color: '#ffffff',
+              strokeColor: '#000000',
+              height: 50,
+              fontSize: 14,
+              strokeWidth: 2,
+              imageSrc: 'line',
+              text: '_default',
+              lockwh: true,
+              angle: 0,
+              zIndex: 1
             }
           ]
         }, {
