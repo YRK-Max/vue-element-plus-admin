@@ -129,7 +129,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
-    margin: 0;
+    margin: 5px 0 0 0;
     padding: 0;
     li {
       position: relative;
