@@ -9,7 +9,7 @@ function resolve(dir) {
 const port = process.env.port || process.env.npm_config_port || 8088
 
 module.exports = defineConfig({
-  lintOnSave: false,
+  lintOnSave: true,
   transpileDependencies: true,
   configureWebpack: {
     // provide the app's title in webpack's name field, so that

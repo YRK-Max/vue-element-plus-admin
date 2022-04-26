@@ -12,7 +12,7 @@
           </router-link>
           <i
             v-if="!page.meta.affix"
-            class="yicon-common yiconcancel ml-1"
+            class="yicon-common yiconcancel ml-1 cursor-pointer"
             @click="handleCloseTag(page)"
           ></i>
         </div>

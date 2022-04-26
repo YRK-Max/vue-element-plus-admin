@@ -1,5 +1,5 @@
 <template>
-  <div class="m-3">
+  <div class="p-3" style="background: #f3f6fd">
     <div
       class="enter-y mb-6"
       style="display: flex; height: 400px; "
@@ -13,7 +13,7 @@
           :span="24"
           class="h-full"
         >
-          <el-card class="h-full" />
+          <div></div>
         </el-col>
       </el-row>
       <div style="width:auto;">
@@ -29,7 +29,7 @@
         :xl="8"
         :xs="24"
       >
-        <TodoList />
+        
       </el-col>
       <el-col
         :xl="16"
@@ -52,14 +52,12 @@
 
 <script>
 import LineChart from '@/components/charts/LineChart.vue';
-import TodoList from '@/components/TodoList'
 import FunCard from '@/components/FunCard'
 import { defineComponent } from '@vue/runtime-core';
 
 export default defineComponent({
   components: {
     LineChart,
-    TodoList,
     FunCard
   }
 })

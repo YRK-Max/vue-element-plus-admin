@@ -134,7 +134,7 @@ export default {
   height: 100%;
   .page-tag {
     height: 30px;
-    padding: 3px 5px;
+    padding: 3px 0;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #e3e3e3;

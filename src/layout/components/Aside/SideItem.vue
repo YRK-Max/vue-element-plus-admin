@@ -8,7 +8,7 @@
         </el-menu-item>
       </router-link>
     </template>
-    <el-sub-menu :index="route.path" v-else>
+    <el-sub-menu class="sub-menu" :index="route.path" v-else>
       <template #title>
         <el-icon v-if="route.meta.icon"><i :class="['yicon-common', route.meta.icon]" /></el-icon>
         <span>{{ $t('route.' + route.meta.title) }}</span>
@@ -52,6 +52,8 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="scss" scoped>
-
+<style lang="scss">
+.el-menu--collapse .el-sub-menu.is-active .el-sub-menu__title{
+  color: var(--el-menu-active-color) !important;
+}
 </style>

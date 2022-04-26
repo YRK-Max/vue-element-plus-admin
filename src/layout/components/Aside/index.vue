@@ -17,6 +17,7 @@
       class="el-menu-vertical-demo"
       background-color="#001529"
       text-color="#f0f0f0"
+      active-text-color="#426cb9"
     >
       <SideItem
         v-for="(route, index) of fullRoutes"
