@@ -1,5 +1,8 @@
 <template>
-  <span class="flex justify-center items-center extra-tab cursor-pointer px-2" @click="handleRedo">
+  <span
+    class="flex justify-center items-center extra-tab cursor-pointer px-2"
+    @click="handleRedo"
+  >
     <i class="yicon-common yiconshuaxin" />
   </span>
 </template>
@@ -10,11 +13,11 @@ export default defineComponent({
   inject: ['reload'],
   setup() {
     function handleRedo() {
-      this.reload();
+      this.reload()
     }
 
     return {
-      handleRedo
+      handleRedo,
     }
   },
 })

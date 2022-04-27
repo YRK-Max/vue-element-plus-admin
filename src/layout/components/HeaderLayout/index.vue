@@ -20,22 +20,24 @@
   </div>
 </template>
 <script setup>
-import store from '@/store';
+import store from '@/store'
 import Breadcrumb from './Breadcrumb.vue'
 import UserDropdown from './UseDropdown.vue'
-import LocalePicker from './LocalePicker.vue';
-import FullScreen from './FullScreen.vue';
-import { computed } from '@vue/runtime-core';
-import Github from './Github.vue';
-import Notification from './Notification.vue';
+import LocalePicker from './LocalePicker.vue'
+import FullScreen from './FullScreen.vue'
+import { computed } from '@vue/runtime-core'
+import Github from './Github.vue'
+import Notification from './Notification.vue'
 import YIcon from '@/components/YIcon.vue'
 
-const state = store.state;
+const state = store.state
 const isMobile = computed(() => state.app.device === 'mobile')
 
-function FoldControl () {
-  store.dispatch('app/setSideCollapse', !store.getters['app/getSideCollapse']);
-  setTimeout(() => { window.dispatchEvent(new Event('resize')) }, 300);
+function FoldControl() {
+  store.dispatch('app/setSideCollapse', !store.getters['app/getSideCollapse'])
+  setTimeout(() => {
+    window.dispatchEvent(new Event('resize'))
+  }, 300)
 }
 </script>
 <style scoped>

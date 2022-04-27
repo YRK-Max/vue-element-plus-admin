@@ -8,7 +8,10 @@
         <div class="hidden min-h-full pl-4 mr-4 xl:flex xl:flex-col xl:w-6/12">
           <AppLogo />
           <div class="my-auto">
-            <img class="w-1/2 -mt-16 -enter-x" src="@/assets/svg/login-box-bg.svg" />
+            <img
+              class="w-1/2 -mt-16 -enter-x"
+              src="@/assets/svg/login-box-bg.svg"
+            />
             <div class="mt-10 font-medium text-white -enter-x">
               <span class="inline-block mt-4 text-3xl">VUE 3 适用</span>
             </div>
@@ -18,8 +21,7 @@
           </div>
         </div>
         <div class="flex w-full h-full py-5 xl:h-auto xl:py-0 xl:my-0 xl:w-6/12">
-          <div
-            class="
+          <div class="
               login__form
               relative
               w-full
@@ -36,8 +38,7 @@
               lg:w-3/4
               xl:w-2/3
               enter-x
-            "
-          >
+            ">
             <LoginForm />
           </div>
         </div>
@@ -46,10 +47,9 @@
   </div>
 </template>
 <script setup>
-import LoginForm from './components/LoginForm.vue';
-import AppLogo from './components/AppLogo.vue';
-import LocalePicker from '@/layout/components/HeaderLayout/LocalePicker.vue';
-
+import LoginForm from './components/LoginForm.vue'
+import AppLogo from './components/AppLogo.vue'
+import LocalePicker from '@/layout/components/HeaderLayout/LocalePicker.vue'
 </script>
 <style lang="scss" scoped>
 .login {
@@ -65,20 +65,20 @@ import LocalePicker from '@/layout/components/HeaderLayout/LocalePicker.vue';
   }
 
   &::before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      margin-left: -48%;
-      background-image: url(@/assets/svg/login-bg.svg);
-      background-position: 100%;
-      background-repeat: no-repeat;
-      background-size: auto 100%;
-      content: '';
-      @media (max-width: 1280px) {
-        display: none;
-      }
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin-left: -48%;
+    background-image: url(@/assets/svg/login-bg.svg);
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    content: '';
+    @media (max-width: 1280px) {
+      display: none;
     }
+  }
 }
 </style>

@@ -1,7 +1,7 @@
-import { createI18n } from "vue-i18n";
-import zhCN from "./lang/zh_CN";
-import enUS from "./lang/en_US";
 import ls from "@/utils/storage";
+import { createI18n } from "vue-i18n";
+import enUS from "./lang/en_US";
+import zhCN from "./lang/zh_CN";
 
 const i18n = createI18n({
   legacy: false,

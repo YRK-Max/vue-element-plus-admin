@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router';
 
 const routerHistory = createWebHashHistory();
 export const WHITE_NAME_LIST = ['Home', 'Login', '404'];

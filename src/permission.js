@@ -1,10 +1,10 @@
-import NProgress from 'nprogress' // progress bar
-import 'nprogress/nprogress.css' // progress bar style
-import router from './router'
-import store from './store';
-import { getToken } from './utils/token';
 import { constantRoutes } from "@/router";
+import NProgress from 'nprogress'; // progress bar
+import 'nprogress/nprogress.css'; // progress bar style
+import router from './router';
+import store from './store';
 import ls from './utils/storage';
+import { getToken } from './utils/token';
 
 NProgress.configure({ showSpinner: false });
 

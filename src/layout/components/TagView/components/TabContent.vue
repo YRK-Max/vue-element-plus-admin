@@ -1,7 +1,7 @@
 <template>
   <el-dropdown>
     <span class="h-full flex justify-center items-center extra-tab cursor-pointer px-2">
-      <i class="yicon-common yiconxiangxia"/>
+      <i class="yicon-common yiconxiangxia" />
     </span>
     <template #dropdown>
       <el-dropdown-menu>
@@ -15,9 +15,7 @@
 import { defineComponent } from '@vue/runtime-core'
 
 export default defineComponent({
-  setup() {
-    
-  },
+  setup() {},
 })
 </script>
 <style lang="scss" scoped>

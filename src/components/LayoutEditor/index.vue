@@ -84,7 +84,7 @@ import SvgComponent from './components/SvgComponent.vue'
 
 export default {
   components: { ItemPanel, PropertyPanel, YIcon, SvgComponent },
-  data () {
+  data() {
     return {
       loading: true,
       showHelp: false,
@@ -102,16 +102,16 @@ export default {
         text: '',
         lockwh: true,
         angle: 0,
-        zIndex: 1
+        zIndex: 1,
       },
       moveSvg: {
         id: '',
-        index: 0
+        index: 0,
       },
       selectedItem: null,
       offsetPosition: {
         positionX: 0,
-        positionY: 0
+        positionY: 0,
       },
       svgControl: {
         x: 0,
@@ -119,78 +119,87 @@ export default {
         height: 1080,
         width: 1920,
         sheight: 1080,
-        swidth: 1920
-      }
+        swidth: 1920,
+      },
     }
   },
-  created () {
-    let _this = this;
+  created() {
+    let _this = this
     document.onkeydown = function (event) {
       //获取当前选中组件
-      let selectSvgInfo = _this.selectedItem;
-      if (selectSvgInfo == undefined || selectSvgInfo == null || selectSvgInfo == '') {
-        return;
+      let selectSvgInfo = _this.selectedItem
+      if (
+        selectSvgInfo == undefined ||
+        selectSvgInfo == null ||
+        selectSvgInfo == ''
+      ) {
+        return
       }
 
       //键盘按键判断:左箭头-37;上箭头-38；右箭头-39;下箭头-40
-      if (event && event.key == "ArrowLeft") {
-        event.preventDefault();
-        selectSvgInfo.svgPositionX -= 1;
-      } else if (event && event.key == "ArrowUp") {
-        event.preventDefault();
-        selectSvgInfo.svgPositionY -= 1;
-      } else if (event && event.key == "ArrowRight") {
-        event.preventDefault();
-        selectSvgInfo.svgPositionX += 1;
-      } else if (event && event.key == "ArrowDown") {
-        event.preventDefault();
-        selectSvgInfo.svgPositionY += 1;
+      if (event && event.key == 'ArrowLeft') {
+        event.preventDefault()
+        selectSvgInfo.svgPositionX -= 1
+      } else if (event && event.key == 'ArrowUp') {
+        event.preventDefault()
+        selectSvgInfo.svgPositionY -= 1
+      } else if (event && event.key == 'ArrowRight') {
+        event.preventDefault()
+        selectSvgInfo.svgPositionX += 1
+      } else if (event && event.key == 'ArrowDown') {
+        event.preventDefault()
+        selectSvgInfo.svgPositionY += 1
       }
       // Ctrl + Alt + c 复制
-      else if (event && event.ctrlKey && event.altKey && event.key == "c") {
-        event.preventDefault();
-        let copySvgInfoStr = JSON.stringify(selectSvgInfo);
-        let copySvgInfo = JSON.parse(copySvgInfoStr);
-        copySvgInfo.id = UCore.GenUUid();
-        copySvgInfo.svgPositionX = selectSvgInfo.svgPositionX + 10;
-        copySvgInfo.svgPositionY = selectSvgInfo.svgPositionY + 10;
-        _this.svgList.push(copySvgInfo);
-        _this.selectedItem = copySvgInfo;
+      else if (event && event.ctrlKey && event.altKey && event.key == 'c') {
+        event.preventDefault()
+        let copySvgInfoStr = JSON.stringify(selectSvgInfo)
+        let copySvgInfo = JSON.parse(copySvgInfoStr)
+        copySvgInfo.id = UCore.GenUUid()
+        copySvgInfo.svgPositionX = selectSvgInfo.svgPositionX + 10
+        copySvgInfo.svgPositionY = selectSvgInfo.svgPositionY + 10
+        _this.svgList.push(copySvgInfo)
+        _this.selectedItem = copySvgInfo
         setTimeout(function () {
-          _this.changeSelectedItem(copySvgInfo.id);
-        }, 100);
+          _this.changeSelectedItem(copySvgInfo.id)
+        }, 100)
       }
       // Delete 删除
-      else if (event && event.key == "Delete") {
-        event.preventDefault();
+      else if (event && event.key == 'Delete') {
+        event.preventDefault()
         //根据当前id找到当前元素的index
-        let selectSvgIndex = _this.svgList.indexOf(_this.svgList.filter(f => f.id == selectSvgInfo.id)[0]);
-        _this.svgList.splice(selectSvgIndex, 1);
+        let selectSvgIndex = _this.svgList.indexOf(
+          _this.svgList.filter((f) => f.id == selectSvgInfo.id)[0]
+        )
+        _this.svgList.splice(selectSvgIndex, 1)
         if (_this.svgList.length > 0) {
-          _this.selectedItem = _this.svgList[0];
-          _this.changeSelectedItem(_this.selectedItem.id);
+          _this.selectedItem = _this.svgList[0]
+          _this.changeSelectedItem(_this.selectedItem.id)
         } else {
-          _this.selectedItem = null;
+          _this.selectedItem = null
         }
       }
     }
   },
-  mounted () {
-    let _this = this;
+  mounted() {
+    let _this = this
     this.$nextTick(() => {
       setTimeout(() => {
-        this.loading = false;
-        let canvasdiv = document.querySelector('#canvas');
-        canvasdiv.addEventListener("dragover", function (event) {
-          event.preventDefault();
-          _this.currentlyNewObj = global.CurrentlyObj;
-        }, false);
+        this.loading = false
+        let canvasdiv = document.querySelector('#canvas')
+        canvasdiv.addEventListener(
+          'dragover',
+          function (event) {
+            event.preventDefault()
+            _this.currentlyNewObj = global.CurrentlyObj
+          },
+          false
+        )
 
-
-        canvasdiv.addEventListener("drop", function (event) {
-          event.preventDefault();
+        canvasdiv.addEventListener('drop', function (event) {
+          event.preventDefault()
           if (_this.currentlyNewObj.type == '') {
-            return;
+            return
           }
           let svgItem = {
             id: UCore.GenUUid(),
@@ -209,14 +218,14 @@ export default {
             svgText: _this.currentlyNewObj.text,
             angle: _this.currentlyNewObj.angle,
             zIndex: _this.currentlyNewObj.zIndex,
-            lockwh: _this.currentlyNewObj.lockwh
+            lockwh: _this.currentlyNewObj.lockwh,
           }
-          _this.svgList.push(svgItem);
-          _this.selectedItem = svgItem;
+          _this.svgList.push(svgItem)
+          _this.selectedItem = svgItem
 
           // 设置选中样式
           setTimeout(function () {
-            _this.changeSelectedItem(svgItem.id);
+            _this.changeSelectedItem(svgItem.id)
           }, 100)
 
           global.CurrentlyObj = {
@@ -232,135 +241,161 @@ export default {
             text: '',
             lockwh: true,
             angle: 0,
-            zIndex: 1
-          };
+            zIndex: 1,
+          }
         })
       }, 300)
     })
   },
   methods: {
-    mouseWheel (event) {
+    mouseWheel(event) {
       //获取当前选中组件
-      let selectSvgInfo = this.selectedItem;
-      if (selectSvgInfo == undefined || selectSvgInfo == null || selectSvgInfo == '') {
+      let selectSvgInfo = this.selectedItem
+      if (
+        selectSvgInfo == undefined ||
+        selectSvgInfo == null ||
+        selectSvgInfo == ''
+      ) {
         if (!event.ctrlKey) {
-          return;
+          return
         }
-        event.preventDefault();
-        let svgZoomHeight = event.wheelDelta > 0 ? 10.8 : -10.8;
-        let svgZoomWidth = event.wheelDelta > 0 ? 19.2 : -19.2;
-        this.svgControl.height - svgZoomHeight > 0 ? this.svgControl.height -= svgZoomHeight : 400;
-        this.svgControl.width - svgZoomWidth > 0 ? this.svgControl.width -= svgZoomWidth : 400;
-        let mousePositionX = event.offsetX;
-        let mousePositionY = event.offsetY;
-        let zoomOfx = this.svgControl.width / this.svgControl.swidth;
-        let zoomOfy = this.svgControl.height / this.svgControl.sheight;
-        this.svgControl.x = (1 - zoomOfx) * mousePositionX;
-        this.svgControl.y = (1 - zoomOfy) * mousePositionY;
+        event.preventDefault()
+        let svgZoomHeight = event.wheelDelta > 0 ? 10.8 : -10.8
+        let svgZoomWidth = event.wheelDelta > 0 ? 19.2 : -19.2
+        this.svgControl.height - svgZoomHeight > 0
+          ? (this.svgControl.height -= svgZoomHeight)
+          : 400
+        this.svgControl.width - svgZoomWidth > 0
+          ? (this.svgControl.width -= svgZoomWidth)
+          : 400
+        let mousePositionX = event.offsetX
+        let mousePositionY = event.offsetY
+        let zoomOfx = this.svgControl.width / this.svgControl.swidth
+        let zoomOfy = this.svgControl.height / this.svgControl.sheight
+        this.svgControl.x = (1 - zoomOfx) * mousePositionX
+        this.svgControl.y = (1 - zoomOfy) * mousePositionY
       } else {
-        event.preventDefault();
+        event.preventDefault()
         //判断滚轮方向 -100是往上滑 100是下滑
-        let svgItemZoom = event.wheelDelta > 0 ? "2" : "-2";
+        let svgItemZoom = event.wheelDelta > 0 ? '2' : '-2'
         if (event.ctrlKey) {
-          selectSvgInfo.width = parseInt(selectSvgInfo.width) + parseInt(svgItemZoom);
+          selectSvgInfo.width =
+            parseInt(selectSvgInfo.width) + parseInt(svgItemZoom)
           if (selectSvgInfo.width < 1) {
-            selectSvgInfo.width = 1;
+            selectSvgInfo.width = 1
           }
         } else {
-          selectSvgInfo.height = parseInt(selectSvgInfo.height) + parseInt(svgItemZoom);
+          selectSvgInfo.height =
+            parseInt(selectSvgInfo.height) + parseInt(svgItemZoom)
           if (selectSvgInfo.height < 1) {
-            selectSvgInfo.height = 1;
+            selectSvgInfo.height = 1
           }
         }
       }
     },
-    mouseMove (event) {
+    mouseMove(event) {
       if (event.offsetX == -1) {
-        return;
+        return
       }
       if (event.target.nodeName == 'INPUT') {
-        return;
+        return
       }
       if (event.offsetY == -1) {
-        return;
+        return
       }
       if (this.moveSvg.id == '') {
-        return;
+        return
       }
 
-      let mousePositionX = event.offsetX;
-      let mousePositionY = event.offsetY;
-      let zoomOfx = this.svgControl.width / this.svgControl.swidth;
-      let zoomOfy = this.svgControl.height / this.svgControl.sheight;
+      let mousePositionX = event.offsetX
+      let mousePositionY = event.offsetY
+      let zoomOfx = this.svgControl.width / this.svgControl.swidth
+      let zoomOfy = this.svgControl.height / this.svgControl.sheight
 
       //将要移动的元素坐标设备为鼠标坐标
-      let svgPositionX = mousePositionX + this.offsetPosition.positionX;
-      let svgPositionY = mousePositionY + this.offsetPosition.positionY;
+      let svgPositionX = mousePositionX + this.offsetPosition.positionX
+      let svgPositionY = mousePositionY + this.offsetPosition.positionY
 
-      console.log('mx: ' + mousePositionX + ', my: ' + mousePositionY);
-      console.log('sx: ' + this.svgList[this.moveSvg.index].svgPositionX + ', sy: ' + this.svgList[this.moveSvg.index].svgPositionY);
-      console.log('ox: ' + this.offsetPosition.positionX + ', oy: ' + this.offsetPosition.positionY);
-      console.log('zx: ' + zoomOfx+ ', zy: ' + zoomOfy);
-      console.log('rx: ' + svgPositionX+ ', ry: ' + svgPositionY);
-      console.log('--------------------------------------------------------------------------------');
+      console.log('mx: ' + mousePositionX + ', my: ' + mousePositionY)
+      console.log(
+        'sx: ' +
+          this.svgList[this.moveSvg.index].svgPositionX +
+          ', sy: ' +
+          this.svgList[this.moveSvg.index].svgPositionY
+      )
+      console.log(
+        'ox: ' +
+          this.offsetPosition.positionX +
+          ', oy: ' +
+          this.offsetPosition.positionY
+      )
+      console.log('zx: ' + zoomOfx + ', zy: ' + zoomOfy)
+      console.log('rx: ' + svgPositionX + ', ry: ' + svgPositionY)
+      console.log(
+        '--------------------------------------------------------------------------------'
+      )
 
-      this.svgList[this.moveSvg.index].svgPositionX = svgPositionX;
-      this.svgList[this.moveSvg.index].svgPositionY = svgPositionY;
+      this.svgList[this.moveSvg.index].svgPositionX = svgPositionX
+      this.svgList[this.moveSvg.index].svgPositionY = svgPositionY
     },
-    mouseupCanvas () {
+    mouseupCanvas() {
       // 移动结束后将移动标志去掉
       this.moveSvg = {
         id: '',
-        index: 0
+        index: 0,
       }
     },
-    mousedownSvg (event, id, index) {
-      event.stopPropagation();
+    mousedownSvg(event, id, index) {
+      event.stopPropagation()
       //从数组里面根据index找到当前元素
-      this.moveSvg.id = id;
-      this.moveSvg.index = index;
+      this.moveSvg.id = id
+      this.moveSvg.index = index
       // 变更选中元素
-      this.selectedItem = this.svgList[index];
+      this.selectedItem = this.svgList[index]
       // 获取初始偏移量
-      this.offsetPosition.positionX = this.selectedItem["svgPositionX"] - event.offsetX
-      this.offsetPosition.positionY = this.selectedItem["svgPositionY"] - event.offsetY
+      this.offsetPosition.positionX =
+        this.selectedItem['svgPositionX'] - event.offsetX
+      this.offsetPosition.positionY =
+        this.selectedItem['svgPositionY'] - event.offsetY
       // 添加选中
-      this.changeSelectedItem(id);
+      this.changeSelectedItem(id)
     },
-    canvasMouseDown (event) {
-      event.preventDefault();
+    canvasMouseDown(event) {
+      event.preventDefault()
       //获取所有g标签 清除所有选中样式
-      let gAnyList = document.querySelectorAll('g');
-      gAnyList.forEach(g => {
-        g.classList.remove("topo-layer-view-selected")
-      });
-      this.selectedItem = null;
+      let gAnyList = document.querySelectorAll('g')
+      gAnyList.forEach((g) => {
+        g.classList.remove('topo-layer-view-selected')
+      })
+      this.selectedItem = null
     },
-    changeSelectedItem (id) {
+    changeSelectedItem(id) {
       // 获取所有g标签，并移除所有g标签上的选中状态
-      let gAnyList = document.querySelectorAll('g');
-      gAnyList.forEach(g => {
-        g.classList.remove("topo-layer-view-selected")
-      });
+      let gAnyList = document.querySelectorAll('g')
+      gAnyList.forEach((g) => {
+        g.classList.remove('topo-layer-view-selected')
+      })
       // 根据id给元素加上选中状态
-      let dom = document.getElementById(id);
-      dom.classList.add("topo-layer-view-selected");
+      let dom = document.getElementById(id)
+      dom.classList.add('topo-layer-view-selected')
     },
-    sortSvgItems () {
-      const tempSvgList = JSON.parse(JSON.stringify(this.svgList));
-      this.svgList = [];
-      tempSvgList.sort((a, b) => { return a['zIndex'] - b['zIndex'] });
-      this.svgList = tempSvgList;
+    sortSvgItems() {
+      const tempSvgList = JSON.parse(JSON.stringify(this.svgList))
+      this.svgList = []
+      tempSvgList.sort((a, b) => {
+        return a['zIndex'] - b['zIndex']
+      })
+      this.svgList = tempSvgList
     },
-    exportData (data) {
+    exportData(data) {
       if (data === 'SVG') {
         let svg_ele = document.getElementById('main_svg')
         alert(svg_ele.outerHTML)
       } else if (data === 'JSON') {
-        alert(JSON.stringify(this.svgList));
+        alert(JSON.stringify(this.svgList))
       }
     },
-  }
+  },
 }
 </script>
 

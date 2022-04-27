@@ -27,13 +27,13 @@
 
 <script>
 import { computed } from '@vue/runtime-core'
-import { number } from 'echarts';
+import { number } from 'echarts'
 import YIcon from '@/components/YIcon.vue'
 
 export default {
   name: 'CardItem',
   components: {
-    YIcon
+    YIcon,
   },
   props: {
     compareValue: number,
@@ -41,20 +41,20 @@ export default {
     icon: String,
     iconColor: String,
     text: String,
-    imageUrl: String
+    imageUrl: String,
   },
-  setup (props, context) {
+  setup(props, context) {
     const isSelected = computed(() => {
-      return props.compareValue == props.selectedValue;
+      return props.compareValue == props.selectedValue
     })
-    function handleChange () {
+    function handleChange() {
       context.emit('change', props.compareValue)
     }
     return {
       isSelected,
-      handleChange
+      handleChange,
     }
-  }
+  },
 }
 </script>
 

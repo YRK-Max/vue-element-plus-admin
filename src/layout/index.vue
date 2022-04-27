@@ -50,50 +50,52 @@
 </template>
 
 <script>
-import ASide from "./components/Aside";
-import HeaderLayout from "./components/HeaderLayout";
-import TagView from "./components/TagView/index.vue";
-import store from "@/store";
-import Aside from "./components/Aside/index.vue";
-import { computed, nextTick, ref } from '@vue/runtime-core';
+import ASide from './components/Aside'
+import HeaderLayout from './components/HeaderLayout'
+import TagView from './components/TagView/index.vue'
+import store from '@/store'
+import Aside from './components/Aside/index.vue'
+import { computed, nextTick, ref } from '@vue/runtime-core'
 
 export default {
-  name: "LayoutIframe",
+  name: 'LayoutIframe',
   components: { ASide, HeaderLayout, TagView, Aside },
-  beforeMount () {
-    this.handleResize();
-    window.addEventListener('resize', () => { this.handleResize() });
+  beforeMount() {
+    this.handleResize()
+    window.addEventListener('resize', () => {
+      this.handleResize()
+    })
   },
-  provide () {
+  provide() {
     return {
-      reload: this.reload
+      reload: this.reload,
     }
   },
-  setup () {
+  setup() {
     const { body } = document
-    const drawerVisible = true;
-    const WIDTH = 992;
-    const isDesktop = computed(() => store.state.app.device === 'desktop');
-    const isCollapse = computed(() => !store.state.app.sideCollapse);
-    const isRouterAlive = ref(true);
+    const drawerVisible = true
+    const WIDTH = 992
+    const isDesktop = computed(() => store.state.app.device === 'desktop')
+    const isCollapse = computed(() => !store.state.app.sideCollapse)
+    const isRouterAlive = ref(true)
 
-    function isMobile () {
-      const rect = body.getBoundingClientRect();
+    function isMobile() {
+      const rect = body.getBoundingClientRect()
       return rect.width - 1 < WIDTH
     }
 
-    function handleResize () {
+    function handleResize() {
       store.dispatch('app/toggleDevice', isMobile() ? 'mobile' : 'desktop')
     }
 
-    function handleDrawerClose () {
+    function handleDrawerClose() {
       store.dispatch('app/setSideCollapse', true)
     }
 
-    async function reload () {
-      isRouterAlive.value = false;
-      await nextTick();
-      isRouterAlive.value = true;
+    async function reload() {
+      isRouterAlive.value = false
+      await nextTick()
+      isRouterAlive.value = true
     }
 
     return {
@@ -104,9 +106,9 @@ export default {
       isRouterAlive,
       handleResize,
       handleDrawerClose,
-      reload
+      reload,
     }
-  }
+  },
 }
 </script>
 <style lang="scss" scoped>

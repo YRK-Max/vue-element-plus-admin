@@ -1,5 +1,8 @@
 <template>
-  <div class="p-3" style="background: #f3f6fd">
+  <div
+    class="p-3"
+    style="background: #f3f6fd"
+  >
     <div
       class="enter-y mb-6"
       style="display: flex; height: 400px; "
@@ -29,7 +32,7 @@
         :xl="8"
         :xs="24"
       >
-        
+
       </el-col>
       <el-col
         :xl="16"
@@ -51,15 +54,15 @@
 </template>
 
 <script>
-import LineChart from '@/components/charts/LineChart.vue';
+import LineChart from '@/components/charts/LineChart.vue'
 import FunCard from '@/components/FunCard'
-import { defineComponent } from '@vue/runtime-core';
+import { defineComponent } from '@vue/runtime-core'
 
 export default defineComponent({
   components: {
     LineChart,
-    FunCard
-  }
+    FunCard,
+  },
 })
 </script>
 

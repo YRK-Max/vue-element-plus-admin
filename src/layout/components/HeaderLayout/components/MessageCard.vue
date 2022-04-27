@@ -51,25 +51,30 @@ export default defineComponent({
   props: ['type', 'content', 'timekey', 'alreadyRead'],
   components: { YIcon },
   methods: {
-    getIconByType () {
+    getIconByType() {
       switch (this.type) {
-        case 'ddmsg': return 'yicondingding01';
-        case 'warning': return 'yiconbg-warning-copy';
-        case 'mail': return 'yicondianziyoujianemail711';
-        case 'favorite': return 'yiconshoucang';
-        default: return 'yiconbell';
+        case 'ddmsg':
+          return 'yicondingding01'
+        case 'warning':
+          return 'yiconbg-warning-copy'
+        case 'mail':
+          return 'yicondianziyoujianemail711'
+        case 'favorite':
+          return 'yiconshoucang'
+        default:
+          return 'yiconbell'
       }
-    }
+    },
   },
-  setup (props, ctx) {
-    function handleClear () {
-      ctx.emit('clear');
+  setup(props, ctx) {
+    function handleClear() {
+      ctx.emit('clear')
     }
 
     return {
-      handleClear
+      handleClear,
     }
-  }
+  },
 })
 </script>
 <style scoped>

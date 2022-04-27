@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { getPermissionsByUser } from "@/api/user"
+import { getPermissionsByUser } from "@/api/user";
 import router, { constantRoutes } from "@/router";
 
 export const permission = {

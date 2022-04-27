@@ -1,6 +1,6 @@
 import axios from "axios";
-import { getToken } from "./token";
 import { ElNotification } from "element-plus";
+import { getToken } from "./token";
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL,

@@ -89,15 +89,15 @@
 export default {
   props: ['svgInfo'],
   computed: {
-    selectedSvgInfo () {
-      return this.svgInfo;
-    }
+    selectedSvgInfo() {
+      return this.svgInfo
+    },
   },
   methods: {
-    handlezIndexChange () {
-      this.$emit('zIndexChange');
-    }
-  }
+    handlezIndexChange() {
+      this.$emit('zIndexChange')
+    },
+  },
 }
 </script>
 

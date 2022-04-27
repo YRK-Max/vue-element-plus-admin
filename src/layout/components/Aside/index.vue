@@ -28,14 +28,14 @@
   </div>
 </template>
 <script setup>
-import { useStore } from 'vuex';
-import { useRoute } from 'vue-router';
-import { computed } from 'vue';
-import SideItem from './SideItem';
+import { useStore } from 'vuex'
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
+import SideItem from './SideItem'
 // import { constantRoutes } from '@/router';
 
-const store = useStore();
-const route = useRoute();
+const store = useStore()
+const route = useRoute()
 const routeName = computed(() => route.name)
 const isMobile = computed(() => store.state.app.device === 'mobile')
 const fullRoutes = computed(() => store.state.permission.routes)

@@ -28,44 +28,47 @@
   </div>
 </template>
 <script>
-import ScrollPanel from "./ScrollPanel.vue";
-import TabRedo from "./components/TabRedo.vue";
-import TabContent from "./components/TabContent.vue";
-import { useRoute } from "vue-router";
-import { ref, watch, defineComponent } from "@vue/runtime-core";
-import store from "@/store";
-import router from "@/router";
+import ScrollPanel from './ScrollPanel.vue'
+import TabRedo from './components/TabRedo.vue'
+import TabContent from './components/TabContent.vue'
+import { useRoute } from 'vue-router'
+import { ref, watch, defineComponent } from '@vue/runtime-core'
+import store from '@/store'
+import router from '@/router'
 
 export default defineComponent({
   components: { ScrollPanel, TabRedo, TabContent },
-  // eslint-disable-next-line no-unused-vars
-  setup () {
-    const route = useRoute();
-    const state = store.state;
-    let currentRouteName = ref(route.name);
+  setup() {
+    const route = useRoute()
+    const state = store.state
+    let currentRouteName = ref(route.name)
 
     // eslint-disable-next-line no-unused-vars
-    watch(route, (nval, oval) => { currentRouteName.value = nval.name })
+    watch(route, (nval, oval) => {
+      currentRouteName.value = nval.name
+    })
 
-    function handleCloseTag (close_page) {
+    function handleCloseTag(close_page) {
       const viewdPages = store.state.tags.viewdPages
-      store.dispatch('tags/delPageTag', viewdPages.indexOf(close_page)).then(() => {
-        if (isActive(close_page)) {
-          router.push(viewdPages.slice(-1)[0])
-        }
-      })
+      store
+        .dispatch('tags/delPageTag', viewdPages.indexOf(close_page))
+        .then(() => {
+          if (isActive(close_page)) {
+            router.push(viewdPages.slice(-1)[0])
+          }
+        })
     }
 
-    function isActive (page) {
+    function isActive(page) {
       return page.name === route.name
     }
 
     return {
       state,
       currentRouteName,
-      handleCloseTag
+      handleCloseTag,
     }
-  }
+  },
 })
 </script>
 <style lang="scss" scoped>
@@ -96,7 +99,7 @@ export default defineComponent({
           color: #fff;
           border-color: #426cb9;
           &::before {
-            content: "";
+            content: '';
             background: #fff;
             display: inline-block;
             width: 8px;
