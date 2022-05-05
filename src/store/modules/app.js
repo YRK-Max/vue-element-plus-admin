@@ -7,7 +7,7 @@ export const app = {
     device: 'desktop'
   }),
   mutations: {
-    newSideCollapse(state, collapse) {
+    SET_COLLAPSE(state, collapse) {
       state.sideCollapse = collapse
       ls.set('sideBarState', collapse)
     },
@@ -17,7 +17,7 @@ export const app = {
   },
   actions: {
     setSideCollapse(context, collapse) {
-      context.commit('newSideCollapse', collapse)
+      context.commit('SET_COLLAPSE', collapse)
     },
     toggleDevice(context, device) {
       context.commit('TOGGLE_DEVICE', device)

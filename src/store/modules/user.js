@@ -11,22 +11,19 @@ export const user = {
     roles: []
   }),
   mutations: {
-    setUserInfo(state, info) {
+    SET_USERINFO(state, info) {
       state.userInfo = info
       ls.set('userInfo', state.userInfo)
     },
-    setRoles(state, roles) {
+    SET_ROLES(state, roles) {
       state.roles = roles
     },
-    resetUserInfo(state) {
+    RESET_USERINFO(state) {
       state.userInfo = { username: 'default' }
       ls.remove('userInfo')
     }
   },
   actions: {
-    setUserInfo(context) {
-      context.commit('setUserInfo')
-    },
     login(context, userInfo) {
       return new Promise((resolve, reject) => {
         login(userInfo).then(res => {
@@ -46,8 +43,8 @@ export const user = {
       return new Promise((resolve, reject) => {
         getUserInfo(userInfo).then(res => {
           if (res && res['success']) {
-            context.commit('setUserInfo', res['data']['userInfo'])
-            context.commit('setRoles', res['data']['roles'])
+            context.commit('SET_USERINFO', res['data']['userInfo'])
+            context.commit('SET_ROLES', res['data']['roles'])
             resolve(res['data'])
           } else {
             reject(res['msg'])
@@ -56,7 +53,7 @@ export const user = {
       })
     },
     logout(context) {
-      context.commit('resetUserInfo')
+      context.commit('RESET_USERINFO')
       removeToken()
     }
   },

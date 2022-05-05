@@ -4,14 +4,14 @@ export const tags = {
     viewdPages: []
   }),
   mutations: {
-    addPage(state, page) {
+    ADD_PAGE(state, page) {
       if (page instanceof Array) {
         state.viewdPages.push(...page)
       } else {
         state.viewdPages.push(page)
       }
     },
-    removePage(state, index) {
+    REMOVE_PAGE(state, index) {
       if (index > -1) {
         state.viewdPages.splice(index, 1)
       }
@@ -20,7 +20,7 @@ export const tags = {
   actions: {
     delPageTag(context, index) {
       return new Promise(resolve => {
-        context.commit('removePage', index)
+        context.commit('REMOVE_PAGE', index)
         resolve([...context.state.viewdPages])
       })
     }

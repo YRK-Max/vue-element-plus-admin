@@ -1,6 +1,6 @@
 import { constantRoutes } from '@/router'
-import NProgress from 'nprogress' // progress bar
-import 'nprogress/nprogress.css' // progress bar style
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 import router from './router'
 import store from './store'
 import ls from './utils/storage'
@@ -30,7 +30,7 @@ router.beforeEach(async(to, from, next) => {
       // 如果页签列表为空，则为首次登入，
       if (pages.length === 0) {
         const viewdPages = getAffixPages(constantRoutes)
-        store.commit('tags/addPage', viewdPages)
+        store.commit('tags/ADD_PAGE', viewdPages)
       }
 
       if (isFresh) {
@@ -50,7 +50,7 @@ router.beforeEach(async(to, from, next) => {
         const length = pages.filter(p => p.path === to.path).length
         const fullInfoOfTo = fullRoutesInfo.filter(r => r.path === to.path)[0]
         if (length === 0 && !fullInfoOfTo.meta.affix) {
-          store.commit('tags/addPage', fullInfoOfTo)
+          store.commit('tags/ADD_PAGE', fullInfoOfTo)
         }
         next()
       }
