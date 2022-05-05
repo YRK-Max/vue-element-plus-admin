@@ -9,8 +9,8 @@ import LayoutEditor from '@/components/LayoutEditor'
 
 export default {
   components: {
-    LayoutEditor,
-  },
+    LayoutEditor
+  }
 }
 </script>
 

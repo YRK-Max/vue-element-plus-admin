@@ -27,9 +27,9 @@ export default {
   props: {
     objProperty: {
       type: Object,
-      default: () => {},
-    },
-  },
+      default: () => {}
+    }
+  }
 }
 </script>
 

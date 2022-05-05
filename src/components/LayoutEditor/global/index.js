@@ -1,4 +1,4 @@
-let CurrentlyObj = {
+const CurrentlyObj = {
   title: '',
   type: '',
   color: '',

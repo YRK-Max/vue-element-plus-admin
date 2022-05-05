@@ -58,11 +58,11 @@ const store = useStore()
 const route = useRoute()
 const loginParam = reactive({
   username: 'admin',
-  password: '123456',
+  password: '123456'
 })
 const rememberMe = ref(false)
 const { t } = useI18n()
-let btnLoading = ref(false)
+const btnLoading = ref(false)
 
 function handleLogin() {
   btnLoading.value = true
@@ -72,7 +72,7 @@ function handleLogin() {
       ElNotification({
         title: t('login.success'),
         message: t('login.welcomBack') + ': ' + loginParam['username'],
-        type: 'success',
+        type: 'success'
       })
       btnLoading.value = false
     },
@@ -80,7 +80,7 @@ function handleLogin() {
       ElNotification({
         title: t('login.failure'),
         message: error,
-        type: 'error',
+        type: 'error'
       })
       btnLoading.value = false
     }

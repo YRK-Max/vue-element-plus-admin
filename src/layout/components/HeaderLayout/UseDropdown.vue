@@ -31,9 +31,9 @@ function handleLogout() {
   ElMessageBox.confirm('确定退出登录?', '退出登录', {
     confirmButtonText: 'OK',
     cancelButtonText: 'Cancel',
-    type: 'warning',
+    type: 'warning'
   })
-    .then(async () => {
+    .then(async() => {
       await store.dispatch('user/logout')
       router.push(`/login?redirect=${route.fullPath}`)
     })

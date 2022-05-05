@@ -33,7 +33,7 @@ export default defineComponent({
   props: ['route'],
   setup(props) {
     const route = props.route
-    let oneItem = reactive({ data: { meta: { title: '' } } })
+    const oneItem = reactive({ data: { meta: { title: '' }}})
 
     function hasOnlyOneShowChild() {
       if (!route.children) {
@@ -51,9 +51,9 @@ export default defineComponent({
 
     return {
       oneItem,
-      hasOnlyOneShowChild,
+      hasOnlyOneShowChild
     }
-  },
+  }
 })
 </script>
 <style lang="scss">

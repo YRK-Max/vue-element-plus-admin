@@ -91,30 +91,30 @@ export default defineComponent({
           type: 'ddmsg',
           content: '白色的基本上都无阿范围划分为符合和我说为分为氛围',
           timekey: '2022-03-05 15:48:22',
-          alreadyRead: false,
+          alreadyRead: false
         },
         {
           type: 'warning',
           content: '白色的基本上都无阿范围划分为符合和我说为分为氛围',
           timekey: '2022-03-05 15:48:22',
-          alreadyRead: false,
+          alreadyRead: false
         },
         {
           type: 'mail',
           content: '发件人：1354984@qq.com',
           timekey: '2022-03-14 02:17:35',
-          alreadyRead: false,
+          alreadyRead: false
         },
         {
           type: 'ddmsg',
           content: '白色的基本上都无阿范围划分为符合和我说为分为氛围',
           timekey: '2022-03-12 15:48:22',
-          alreadyRead: true,
-        },
+          alreadyRead: true
+        }
       ],
-      msgs: [],
+      msgs: []
     }
-  },
+  }
 })
 </script>
 <style lang="scss" scoped>

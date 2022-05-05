@@ -64,7 +64,7 @@ export default defineComponent({
         default:
           return 'yiconbell'
       }
-    },
+    }
   },
   setup(props, ctx) {
     function handleClear() {
@@ -72,9 +72,9 @@ export default defineComponent({
     }
 
     return {
-      handleClear,
+      handleClear
     }
-  },
+  }
 })
 </script>
 <style scoped>

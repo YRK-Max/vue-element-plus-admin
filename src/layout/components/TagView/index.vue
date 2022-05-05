@@ -41,7 +41,7 @@ export default defineComponent({
   setup() {
     const route = useRoute()
     const state = store.state
-    let currentRouteName = ref(route.name)
+    const currentRouteName = ref(route.name)
 
     // eslint-disable-next-line no-unused-vars
     watch(route, (nval, oval) => {
@@ -66,9 +66,9 @@ export default defineComponent({
     return {
       state,
       currentRouteName,
-      handleCloseTag,
+      handleCloseTag
     }
-  },
+  }
 })
 </script>
 <style lang="scss" scoped>

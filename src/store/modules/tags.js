@@ -4,7 +4,7 @@ export const tags = {
     viewdPages: []
   }),
   mutations: {
-    addPage (state, page) {
+    addPage(state, page) {
       if (page instanceof Array) {
         state.viewdPages.push(...page)
       } else {
@@ -26,6 +26,6 @@ export const tags = {
     }
   },
   getters: {
-    
+
   }
 }

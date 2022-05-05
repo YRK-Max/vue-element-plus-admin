@@ -57,7 +57,7 @@ export default {
               text: '_default',
               lockwh: false,
               angle: 0,
-              zIndex: 1,
+              zIndex: 1
             },
             {
               title: '圆',
@@ -71,7 +71,7 @@ export default {
               text: '_default',
               lockwh: true,
               angle: 0,
-              zIndex: 1,
+              zIndex: 1
             },
             {
               title: '线',
@@ -85,9 +85,9 @@ export default {
               text: '_default',
               lockwh: true,
               angle: 0,
-              zIndex: 1,
-            },
-          ],
+              zIndex: 1
+            }
+          ]
         },
         {
           title: '建筑元素',
@@ -105,18 +105,18 @@ export default {
               text: '_default',
               lockwh: true,
               angle: 0,
-              zIndex: 1,
-            },
-          ],
-        },
-      ],
+              zIndex: 1
+            }
+          ]
+        }
+      ]
     }
   },
   methods: {
     mouseDown(itemObj) {
       _global.CurrentlyObj = itemObj
-    },
-  },
+    }
+  }
 }
 </script>
 

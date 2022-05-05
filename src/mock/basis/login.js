@@ -1,12 +1,12 @@
-let Login = {
-  "code": 0,
-  "success": true
+const Login = {
+  'code': 0,
+  'success': true
 }
 
-let UserInfo = {
-  "code": 0,
-  "success": true,
-  "data": {
+const UserInfo = {
+  'code': 0,
+  'success': true,
+  'data': {
     userInfo: {
       username: 'admin',
       depart: 'Software'
@@ -15,7 +15,7 @@ let UserInfo = {
   }
 }
 
-let AccessPermissions = [
+const AccessPermissions = [
   {
     path: '/editor',
     name: 'LayoutEditorLayout',
@@ -70,47 +70,47 @@ export default {
 
   /**
    * 基础 - 登录
-   * @param： {}    
+   * @param： {}
    * @returns：Promise {<pending>}
    **/
   'post|login': option => {
-    const params = JSON.parse(option['body']);
+    const params = JSON.parse(option['body'])
     if (params['username'] === 'admin' && params['password'] === '123456') {
       return Login
-    }else {
+    } else {
       return {
-        "code": 500,
-        "success": false,
-        "msg": '账号或者密码错误'
+        'code': 500,
+        'success': false,
+        'msg': '账号或者密码错误'
       }
     }
   },
   /**
    * 基础 - 获取权限|页面
-   * @param： {}    
+   * @param： {}
    * @returns：Promise {<pending>}
    **/
   'post|getPermissionsByUser': option => {
-    const params = JSON.parse(option['body']);
+    const params = JSON.parse(option['body'])
     if (params['roles'].indexOf('admin') > -1) {
       return AccessPermissions
-    }else {
+    } else {
       return {
-        "code": 500,
-        "success": false,
-        "msg": '权限获取失败'
+        'code': 500,
+        'success': false,
+        'msg': '权限获取失败'
       }
     }
   },
   'post|getUserInfo': option => {
-    const params = JSON.parse(option['body']);
+    const params = JSON.parse(option['body'])
     if (params['username'] === 'admin') {
       return UserInfo
-    }else {
+    } else {
       return {
-        "code": 500,
-        "success": false,
-        "msg": '用户信息获取失败'
+        'code': 500,
+        'success': false,
+        'msg': '用户信息获取失败'
       }
     }
   }

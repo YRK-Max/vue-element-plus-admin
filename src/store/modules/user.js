@@ -1,6 +1,6 @@
-import { getUserInfo, login } from "@/api/user"
-import ls from "@/utils/storage"
-import { removeToken, setToken } from "@/utils/token"
+import { getUserInfo, login } from '@/api/user'
+import ls from '@/utils/storage'
+import { removeToken, setToken } from '@/utils/token'
 
 export const user = {
   namespaced: true,
@@ -27,30 +27,30 @@ export const user = {
     setUserInfo(context) {
       context.commit('setUserInfo')
     },
-    login (context, userInfo) {
+    login(context, userInfo) {
       return new Promise((resolve, reject) => {
         login(userInfo).then(res => {
-          if(res && res['success']) {
-            setToken('admin-token');
+          if (res && res['success']) {
+            setToken('admin-token')
             context.dispatch('getUserInfo', userInfo).then(({ roles }) => {
-              context.dispatch('permission/generateRoutes', roles, { root: true });
-              resolve();
-            });
-          }else {
-            reject(res['msg']);
+              context.dispatch('permission/generateRoutes', roles, { root: true })
+              resolve()
+            })
+          } else {
+            reject(res['msg'])
           }
         })
       })
     },
-    getUserInfo (context, userInfo) {
+    getUserInfo(context, userInfo) {
       return new Promise((resolve, reject) => {
         getUserInfo(userInfo).then(res => {
           if (res && res['success']) {
-            context.commit('setUserInfo', res['data']['userInfo']);
-            context.commit('setRoles', res['data']['roles']);
-            resolve(res['data']);
-          }else {
-            reject(res['msg']);
+            context.commit('setUserInfo', res['data']['userInfo'])
+            context.commit('setRoles', res['data']['roles'])
+            resolve(res['data'])
+          } else {
+            reject(res['msg'])
           }
         })
       })

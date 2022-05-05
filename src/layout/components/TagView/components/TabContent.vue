@@ -15,7 +15,7 @@
 import { defineComponent } from '@vue/runtime-core'
 
 export default defineComponent({
-  setup() {},
+  setup() {}
 })
 </script>
 <style lang="scss" scoped>

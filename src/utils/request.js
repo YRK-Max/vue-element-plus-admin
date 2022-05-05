@@ -1,6 +1,6 @@
-import axios from "axios";
-import { ElNotification } from "element-plus";
-import { getToken } from "./token";
+import axios from 'axios'
+import { ElNotification } from 'element-plus'
+import { getToken } from './token'
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL,
@@ -13,25 +13,25 @@ service.interceptors.request.use(config => {
   if (token) {
     config.headers['Authorization'] = 'Bearer ' + token
   }
-  return config;
+  return config
 }, error => {
-  console.log(error);
-  return Promise.reject(error);
+  console.log(error)
+  return Promise.reject(error)
 })
 
 // 响应拦截器配置
 service.interceptors.response.use(response => {
-  const data = response.data;
+  const data = response.data
 
-  if(response.status !== 200){
+  if (response.status !== 200) {
     ElNotification({
       title: Error,
       message: response['msg'] || 'UnKown Error.',
-      type: 'error',
-    });
+      type: 'error'
+    })
     return Promise.reject(new Error(response['msg'] || 'Error'))
-  }else {
-    return data;
+  } else {
+    return data
   }
 })
 

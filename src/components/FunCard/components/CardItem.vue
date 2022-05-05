@@ -2,9 +2,9 @@
   <div
     class="h-full mr-3 item-class"
     :class="{ 'selected': isSelected }"
-    :style="{ 
-      backgroundImage: 'url(' + imageUrl + ')', 
-      backgroundPosition: 'center center', 
+    :style="{
+      backgroundImage: 'url(' + imageUrl + ')',
+      backgroundPosition: 'center center',
       backgroundRepeat: 'no-repeat' ,
       backgroundSize: 'cover'
     }"
@@ -33,7 +33,7 @@ import YIcon from '@/components/YIcon.vue'
 export default {
   name: 'CardItem',
   components: {
-    YIcon,
+    YIcon
   },
   props: {
     compareValue: number,
@@ -41,20 +41,20 @@ export default {
     icon: String,
     iconColor: String,
     text: String,
-    imageUrl: String,
+    imageUrl: String
   },
   setup(props, context) {
     const isSelected = computed(() => {
-      return props.compareValue == props.selectedValue
+      return props.compareValue === props.selectedValue
     })
     function handleChange() {
       context.emit('change', props.compareValue)
     }
     return {
       isSelected,
-      handleChange,
+      handleChange
     }
-  },
+  }
 }
 </script>
 

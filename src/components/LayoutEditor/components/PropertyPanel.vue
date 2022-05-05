@@ -91,13 +91,13 @@ export default {
   computed: {
     selectedSvgInfo() {
       return this.svgInfo
-    },
+    }
   },
   methods: {
     handlezIndexChange() {
       this.$emit('zIndexChange')
-    },
-  },
+    }
+  }
 }
 </script>
 

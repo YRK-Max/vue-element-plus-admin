@@ -14,9 +14,8 @@ import './permission'
 import router from './router'
 import store from './store'
 
-
 // 开启mock, 如不需要则删掉此行，关闭mock需要卸载mockjs，删掉src/mock，调整proxy至真实后端
-require('./mock');
+require('./mock')
 
 const app = createApp(App)
 app.use(VueI18n)

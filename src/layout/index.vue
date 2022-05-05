@@ -68,7 +68,7 @@ export default {
   },
   provide() {
     return {
-      reload: this.reload,
+      reload: this.reload
     }
   },
   setup() {
@@ -106,9 +106,9 @@ export default {
       isRouterAlive,
       handleResize,
       handleDrawerClose,
-      reload,
+      reload
     }
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

@@ -1,7 +1,7 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router'
 
-const routerHistory = createWebHashHistory();
-export const WHITE_NAME_LIST = ['Home', 'Login', '404'];
+const routerHistory = createWebHashHistory()
+export const WHITE_NAME_LIST = ['Home', 'Login', '404']
 
 // 固定路由
 export const constantRoutes = [
@@ -36,8 +36,6 @@ export const constantRoutes = [
 //   { path: '*', name: '404', redirect: '/404', hidden: true }
 // ]
 
-
-
 const router = createRouter({
   history: routerHistory,
   routes: constantRoutes
@@ -45,11 +43,11 @@ const router = createRouter({
 
 export function resetRouter() {
   router.getRoutes().forEach((route) => {
-    const { name } = route;
+    const { name } = route
     if (name && !WHITE_NAME_LIST.includes(name)) {
-      router.hasRoute(name) && router.removeRoute(name);
+      router.hasRoute(name) && router.removeRoute(name)
     }
-  });
+  })
 }
 
 export default router

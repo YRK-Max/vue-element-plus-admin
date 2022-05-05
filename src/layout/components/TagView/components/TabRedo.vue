@@ -17,9 +17,9 @@ export default defineComponent({
     }
 
     return {
-      handleRedo,
+      handleRedo
     }
-  },
+  }
 })
 </script>
 <style lang="scss" scoped>

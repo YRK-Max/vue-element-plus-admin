@@ -26,11 +26,11 @@ export default {
     icon: { type: String, default: 'yiconimage' },
     size: { type: Number, default: 18 },
     isColorFul: { type: Boolean, default: false },
-    color: { type: String, default: '#000' },
+    color: { type: String, default: '#000' }
   },
   emits: ['click'],
   setup(props, context) {
-    let notColorFulIconClass = ['yicon-common']
+    const notColorFulIconClass = ['yicon-common']
 
     if (!props.isColorFul) {
       notColorFulIconClass.push(props.icon)
@@ -42,9 +42,9 @@ export default {
 
     return {
       notColorFulIconClass,
-      handleClick,
+      handleClick
     }
-  },
+  }
 }
 </script>
 <style scoped>

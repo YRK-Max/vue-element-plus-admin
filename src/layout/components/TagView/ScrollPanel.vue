@@ -10,13 +10,13 @@
 export default {
   data() {
     return {
-      leftPosition: 0,
+      leftPosition: 0
     }
   },
   computed: {
     scrollWrapper() {
       return this.$refs.scrollContainer
-    },
+    }
   },
   methods: {
     handleScroll(e) {
@@ -24,8 +24,8 @@ export default {
       this.scrollWrapper.setScrollLeft(
         (this.scrollWrapper.wrap$.scrollLeft -= eventDelta / 4)
       )
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped>

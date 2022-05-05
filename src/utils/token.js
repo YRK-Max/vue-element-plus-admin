@@ -1,4 +1,4 @@
-import ls from "./storage";
+import ls from './storage'
 
 export function setToken(token) {
   ls.set('token', token, 1 * 24 * 60 * 60 * 1000)
