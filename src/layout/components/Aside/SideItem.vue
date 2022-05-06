@@ -58,6 +58,9 @@ export default defineComponent({
 </script>
 <style lang="scss">
 .el-menu--collapse .el-sub-menu.is-active .el-sub-menu__title {
-  color: var(--el-menu-active-color) !important;
+  color: var(--main-color) !important;
+}
+.el-menu-item.is-active {
+  color: var(--main-color) !important;
 }
 </style>

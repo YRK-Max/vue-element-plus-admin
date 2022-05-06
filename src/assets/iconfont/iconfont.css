@@ -1,8 +1,8 @@
 @font-face {
   font-family: "yicon-common"; /* Project id 2583905 */
-  src: url('iconfont.woff2?t=1650012154382') format('woff2'),
-       url('iconfont.woff?t=1650012154382') format('woff'),
-       url('iconfont.ttf?t=1650012154382') format('truetype');
+  src: url('iconfont.woff2?t=1651815956726') format('woff2'),
+       url('iconfont.woff?t=1651815956726') format('woff'),
+       url('iconfont.ttf?t=1651815956726') format('truetype');
 }
 
 .yicon-common {
@@ -11,6 +11,22 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.yiconmoreandroid:before {
+  content: "\e6a5";
+}
+
+.yicongengduo:before {
+  content: "\e600";
+}
+
+.yiconmore:before {
+  content: "\e6cb";
+}
+
+.yiconlist:before {
+  content: "\e7b5";
 }
 
 .yiconwenhao:before {

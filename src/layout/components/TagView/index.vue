@@ -95,9 +95,9 @@ export default defineComponent({
           margin-right: 5px;
         }
         &.active {
-          background-color: #426cb9;
+          background-color: var(--main-color);
           color: #fff;
-          border-color: #426cb9;
+          border-color: var(--main-color);
           &::before {
             content: '';
             background: #fff;

@@ -4,7 +4,7 @@
     style="background: #f3f6fd"
   >
     <div
-      class="enter-y mb-6"
+      class="enter-y mb-2"
       style="display: flex; height: 400px; "
     >
       <el-row
@@ -16,7 +16,7 @@
           :span="24"
           class="h-full"
         >
-          <div></div>
+          <ProgressCardList/>
         </el-col>
       </el-row>
       <div style="width:auto;">
@@ -56,12 +56,14 @@
 <script>
 import LineChart from '@/components/charts/LineChart.vue'
 import FunCard from '@/components/FunCard'
+import ProgressCardList from '@/components/ProgressCardList'
 import { defineComponent } from '@vue/runtime-core'
 
 export default defineComponent({
   components: {
     LineChart,
-    FunCard
+    FunCard,
+    ProgressCardList
   }
 })
 </script>

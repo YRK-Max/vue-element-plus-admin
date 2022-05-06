@@ -6,6 +6,34 @@
   "description": "通用图标库",
   "glyphs": [
     {
+      "icon_id": "32326",
+      "name": "more_android",
+      "font_class": "moreandroid",
+      "unicode": "e6a5",
+      "unicode_decimal": 59045
+    },
+    {
+      "icon_id": "159969",
+      "name": "more",
+      "font_class": "gengduo",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "16619136",
+      "name": "more",
+      "font_class": "more",
+      "unicode": "e6cb",
+      "unicode_decimal": 59083
+    },
+    {
+      "icon_id": "20284857",
+      "name": "list",
+      "font_class": "list",
+      "unicode": "e7b5",
+      "unicode_decimal": 59317
+    },
+    {
       "icon_id": "650805",
       "name": "问号",
       "font_class": "wenhao",
