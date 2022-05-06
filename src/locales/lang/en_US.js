@@ -4,7 +4,8 @@ export default {
     setting: 'Setting',
     profile: 'Profile',
     selfSetting: 'WorkStation',
-    about: 'About'
+    about: 'About',
+    layoutEditor: 'Layout Designer'
   },
   login: {
     title: 'User Login',
