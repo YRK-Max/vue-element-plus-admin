@@ -1,11 +1,11 @@
 <template>
   <div
-    class="p-3"
+    class="p-2"
     style="background: #f3f6fd"
   >
     <div
       class="enter-y"
-      style="display: flex; height: 400px; "
+      style="display: flex; height: 460px; "
     >
       <el-row
         style="width:calc(100% - 560px); margin-right: 10px;"
