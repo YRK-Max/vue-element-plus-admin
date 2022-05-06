@@ -9,7 +9,6 @@ export const app = {
   mutations: {
     SET_COLLAPSE(state, collapse) {
       state.sideCollapse = collapse
-      ls.set('sideBarState', collapse)
     },
     TOGGLE_DEVICE: (state, device) => {
       state.device = device
@@ -18,6 +17,7 @@ export const app = {
   actions: {
     setSideCollapse(context, collapse) {
       context.commit('SET_COLLAPSE', collapse)
+      ls.set('sideBarState', collapse)
     },
     toggleDevice(context, device) {
       context.commit('TOGGLE_DEVICE', device)
