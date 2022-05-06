@@ -4,7 +4,7 @@
     style="background: #f3f6fd"
   >
     <div
-      class="enter-y"
+      class="enter-y mb-2"
       style="display: flex; height: 460px; "
     >
       <el-row
@@ -28,15 +28,7 @@
       :gutter="6"
     >
       <el-col
-        class="mb-2"
-        :xl="8"
-        :xs="24"
-      >
-
-      </el-col>
-      <el-col
-        :xl="16"
-        :xs="24"
+        :span="24"
       >
         <el-card>
           <template #header>
