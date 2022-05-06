@@ -4,7 +4,7 @@
     style="background: #f3f6fd"
   >
     <div
-      class="enter-y mb-2"
+      class="enter-y"
       style="display: flex; height: 400px; "
     >
       <el-row

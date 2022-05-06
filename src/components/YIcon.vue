@@ -10,7 +10,7 @@
     </svg>
     <div
       v-if="!isColorFul"
-      class="collapse-btn"
+      class="single-color-btn"
       @click="handleClick"
     >
       <i
@@ -53,8 +53,12 @@ export default {
   overflow: hidden;
 }
 
-.collapse-btn {
+.single-color-btn {
+  height: 100%;
   cursor: pointer;
   transition: all 0.4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
