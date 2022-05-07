@@ -79,6 +79,7 @@ export default defineComponent({
   border-radius: 8px;
   background: #fff;
   padding: 5px 5px 0 5px;
+  box-shadow: 4px 3px 4px #dedede, -1px -1px 2px #fefefe;
 
   .main-header {
     height: 98px;

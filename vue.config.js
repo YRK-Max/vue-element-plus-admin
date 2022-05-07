@@ -29,6 +29,11 @@ module.exports = defineConfig({
         target: 'https://d1882834-cda9-4be4-a47e-acfd5b0ed28e.mock.pstmn.io',
         ws: false,
         changeOrigin: true
+      },
+      '/vue-element-plus-admin': {
+        target: 'https://api.github.com/repos/YRK-Max',
+        ws: false,
+        changeOrigin: true
       }
     }
   }
