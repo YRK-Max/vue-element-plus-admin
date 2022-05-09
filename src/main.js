@@ -1,3 +1,4 @@
+import '@/style/index.scss'
 // 引入组件库 Element plus
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'

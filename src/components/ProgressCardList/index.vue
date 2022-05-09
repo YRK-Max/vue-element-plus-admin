@@ -1,5 +1,5 @@
 <template>
-  <div class="main-container h-full">
+  <div class="main-container card-class h-full">
     <div class="main-header">
       <div class="main-header-item flex justify-between items-center pl-2 pr-2">
         <h1 class="font-bold text-xl">Projects</h1>
@@ -21,8 +21,19 @@
           </div>
         </div>
         <div class="flex">
-          <YIcon class="pr-2" icon="yiconlist" />
-          <YIcon class="display-selected" color="#ffffff" icon="yiconmore" />
+          <YIcon
+            class="mr-2"
+            :class="{ 'display-selected':  displayType=='list'}"
+            :color="displayType === 'list' ? '#ffffff' : '#010101'"
+            icon="yiconlist"
+            @click="displayType='list'"
+          />
+          <YIcon
+            :class="{ 'display-selected':  displayType=='card'}"
+            :color="displayType === 'card' ? '#ffffff' : '#010101'"
+            icon="yiconmore"
+            @click="displayType='card'"
+          />
         </div>
       </div>
     </div>
@@ -32,9 +43,12 @@
           v-for="(item, index) of cardInfoList"
           class="mb-1.5"
           :key="index"
-          :span="8"
+          :xl="displayType === 'list' ? 24 : 8"
+          :lg="displayType === 'list' ? 24 : 12"
+          :sm="24"
         >
           <ProgressCard
+            style="height: 200px"
             :title="item['title']"
             :description="item['description']"
             :color="item['color']"
@@ -50,7 +64,7 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import ProgressCard from './components/ProgressCard.vue'
 import YIcon from '@/components/YIcon.vue'
 
@@ -67,8 +81,11 @@ export default defineComponent({
       { title: 'WorkFlow', progress: 45, description: 'test vue3', lastUpdateTime: '2022-04-12', bgcolor: '#c8f7dc', color: '#34c471', remainDays: 22 },
       { title: 'WorkFlow', progress: 70, description: 'test vue3', lastUpdateTime: '2022-04-12', bgcolor: '#ffd3e2', color: '#df3670', remainDays: 15 }
     ]
+    // eslint-disable-next-line prefer-const
+    let displayType = ref('card')
     return {
-      cardInfoList
+      cardInfoList,
+      displayType
     }
   }
 })
@@ -76,10 +93,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .main-container {
-  border-radius: 8px;
   background: #fff;
   padding: 5px 5px 0 5px;
-  box-shadow: 4px 3px 4px #dedede, -1px -1px 2px #fefefe;
 
   .main-header {
     height: 98px;
@@ -112,10 +127,6 @@ export default defineComponent({
     &:hover {
       background-color: #929292;
     }
-  }
-
-  .main-row {
-    height: 400px;
   }
 }
 

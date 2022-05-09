@@ -9,7 +9,4 @@ export default {
 </script>
 
 <style>
-:root {
-  --main-color: #426cb9
-}
 </style>

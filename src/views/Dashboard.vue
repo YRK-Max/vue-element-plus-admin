@@ -8,7 +8,6 @@
       style="display: flex; height: 460px; "
     >
       <el-row
-        style="margin-right: 10px;"
         class="h-full enter-y little-component-class"
         :gutter="6"
       >
@@ -19,7 +18,7 @@
           <ProgressCardList/>
         </el-col>
       </el-row>
-      <div v-if="!isMobile" style="width:auto;">
+      <div v-if="!isMobile" class="w-auto ml-2">
         <FunCard />
       </div>
     </div>
@@ -32,7 +31,7 @@
         :sm="24"
         class="mb-3"
       >
-        <div class="chart-container h-full w-full bg-light-100">
+        <div class="chart-container card-class h-full w-full bg-light-100">
           <div class="chart-container-header">
             <div class="flex">
               <h1>Github Clone趋势</h1>
@@ -58,7 +57,7 @@
         :sm="24"
         class="mb-3"
       >
-        <div class="chart-container h-full w-full bg-light-100">
+        <div class="chart-container card-class h-full w-full bg-light-100">
           <div class="chart-container-header">
             <div class="flex">
               <h1>Github 访问趋势</h1>
@@ -179,8 +178,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 .chart-container {
   height: 450px;
-  border-radius: 8px;
-  box-shadow: 4px 3px 4px #dedede, -1px -1px 1px #fefefe;
 
   .chart-container-header {
     height: 38px;
