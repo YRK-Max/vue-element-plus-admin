@@ -4,9 +4,9 @@
       <img
         style="border-radius: 50%"
         class="w-[30px] mr-3"
-        src="@/assets/images/avatar.jpg"
+        :src="avatarUrl"
       />
-      <label>Admin</label>
+      <label>{{ username }}</label>
     </div>
     <template #dropdown>
       <el-dropdown-menu>
@@ -23,9 +23,15 @@ import { ElMessageBox } from 'element-plus'
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 import router from '@/router'
+import { computed } from '@vue/runtime-core'
+import ls from '@/utils/storage'
 
 const store = useStore()
 const route = useRoute()
+const isThirdLogin = ls.get('isThirdLogin')
+
+const avatarUrl = computed(() => { return store.state.user.userInfo.avatarUrl })
+const username = computed(() => { return isThirdLogin ? store.state.user.userInfo['nickName'] : store.state.user.userInfo['username'] })
 
 function handleLogout() {
   ElMessageBox.confirm('确定退出登录?', '退出登录', {

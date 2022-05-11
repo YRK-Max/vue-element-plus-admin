@@ -9,7 +9,8 @@ const UserInfo = {
   'data': {
     userInfo: {
       username: 'admin',
-      depart: 'Software'
+      depart: 'Software',
+      avatarUrl: 'http://cooer.cc/arctimg/20210908/1631111258069.jpeg'
     },
     roles: ['admin', 'viewer']
   }

@@ -6,6 +6,13 @@
   "description": "通用图标库",
   "glyphs": [
     {
+      "icon_id": "809704",
+      "name": "wechat",
+      "font_class": "wechat",
+      "unicode": "e695",
+      "unicode_decimal": 59029
+    },
+    {
       "icon_id": "1302",
       "name": "加",
       "font_class": "jia",

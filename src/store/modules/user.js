@@ -6,14 +6,20 @@ export const user = {
   namespaced: true,
   state: () => ({
     userInfo: {
-      username: 'default'
+      username: 'default',
+      avatarUrl: '@/assets/images/avatar.jpg'
     },
-    roles: []
+    roles: [],
+    isThirdLogin: false
   }),
   mutations: {
     SET_USERINFO(state, info) {
       state.userInfo = info
       ls.set('userInfo', state.userInfo)
+    },
+    SET_THIRD_LOGIN(state, bool) {
+      state.userInfo = bool
+      ls.set('isThirdLogin', bool)
     },
     SET_ROLES(state, roles) {
       state.roles = roles
@@ -54,6 +60,7 @@ export const user = {
     },
     logout(context) {
       context.commit('RESET_USERINFO')
+      context.commit('SET_THIRD_LOGIN', false)
       removeToken()
     }
   },

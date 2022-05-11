@@ -34,6 +34,14 @@ module.exports = defineConfig({
         target: 'https://api.github.com/repos/YRK-Max',
         ws: false,
         changeOrigin: true
+      },
+      '/third': {
+        target: 'https://api.qauth.cn',
+        ws: false,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/third': ''
+        }
       }
     }
   }

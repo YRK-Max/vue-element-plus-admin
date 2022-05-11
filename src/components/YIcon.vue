@@ -26,7 +26,7 @@ export default {
     icon: { type: String, default: 'yiconimage' },
     size: { type: Number, default: 18 },
     isColorFul: { type: Boolean, default: false },
-    color: { type: String, default: '#000' }
+    color: { type: String }
   },
   emits: ['click'],
   setup(props, context) {

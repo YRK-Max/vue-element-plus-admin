@@ -24,6 +24,7 @@ router.beforeEach(async(to, from, next) => {
     } else {
       // 从 local storage 中获取当前用户数据
       const currentUserInfo = ls.get('userInfo')
+      const isThirdLogin = ls.get('isThirdLogin')
 
       // 获取当前页签列表
       const pages = store.state.tags.viewdPages
@@ -35,8 +36,13 @@ router.beforeEach(async(to, from, next) => {
 
       if (isFresh) {
         // 如果是刷新页面，需要重新请求一次用户角色，并重新构造路由表
-        const { roles } = await store.dispatch('user/getUserInfo', { username: currentUserInfo.username })
-        await store.dispatch('permission/generateRoutes', roles)
+        if (isThirdLogin) {
+          store.commit('user/SET_USERINFO', currentUserInfo)
+          await store.dispatch('permission/generateRoutes', ['admin'])
+        } else {
+          const { roles } = await store.dispatch('user/getUserInfo', { username: currentUserInfo.username })
+          await store.dispatch('permission/generateRoutes', roles)
+        }
         isFresh = false
         /**
           在动态添加路由addRoute后，需要确保新加入的路由被完全加载上去

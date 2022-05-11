@@ -15,7 +15,8 @@ export default {
     failure: '登陆失败',
     welcomBack: '欢迎回来',
     rememberme: '记住密码',
-    findPwd: '找回密码'
+    findPwd: '找回密码',
+    thirdLogin: '第三方登录'
   },
   logout: '退出登录'
 }

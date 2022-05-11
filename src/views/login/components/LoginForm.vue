@@ -44,15 +44,27 @@
         @click="handleLogin"
       >{{ $t('login.loginBtn') }}</el-button>
     </el-form-item>
+    <el-divider class="enter-x">{{$t('login.thirdLogin')}}</el-divider>
+    <el-form-item class="enter-x">
+      <div class="w-full flex justify-around">
+        <div class="flex">
+          <YIcon class="login-icon mr-5" :size="26" icon='yicongithub' />
+          <YIcon class="login-icon" :size="22" icon='yiconwechat' @click="handlerWechatLogin" />
+        </div>
+      </div>
+    </el-form-item>
   </el-form>
 </template>
 <script setup>
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
-import { reactive, ref } from 'vue'
+import { nextTick, reactive, ref } from 'vue'
 import { ElNotification } from 'element-plus'
 import { useI18n } from 'vue-i18n'
+import YIcon from '@/components/YIcon.vue'
+import thirdLoginService from '@/utils/ThirdLogin'
 import router from '@/router'
+import { setToken } from '@/utils/token'
 
 const store = useStore()
 const route = useRoute()
@@ -63,6 +75,39 @@ const loginParam = reactive({
 const rememberMe = ref(false)
 const { t } = useI18n()
 const btnLoading = ref(false)
+
+if (route.query.code) {
+  console.log(route.query.code)
+  const params = {
+    code: route.query.code,
+    appkey: 'b16dd5f4',
+    secret: '5c1fea0654e99947420e15354bb296db'
+  }
+  thirdLoginService.get('/user', { params: params }).then(res => {
+    if (res['code'] === 0) {
+      const responese = res['res']
+      setToken(responese['openId'])
+      store.commit('user/SET_THIRD_LOGIN', true)
+      store.commit('user/SET_USERINFO', responese)
+      nextTick(() => {
+        router.push(route.query.redirect || '/')
+        ElNotification({
+          title: t('login.success'),
+          message: t('login.welcomBack') + ': ' + res['res']['nickName'],
+          type: 'success'
+        })
+      })
+    } else {
+      ElNotification({
+        title: t('login.failure'),
+        message: res['msg'],
+        type: 'error'
+      })
+    }
+  }).catch(err => {
+    console.log(err)
+  })
+}
 
 function handleLogin() {
   btnLoading.value = true
@@ -86,9 +131,21 @@ function handleLogin() {
     }
   )
 }
+
+function handlerWechatLogin() {
+  window.location.href = 'https://api.qauth.cn/qrconnect?appkey=b16dd5f4&state=login'
+}
 </script>
-<style scoped>
+<style lang='scss' scoped>
 .main-form :deep(.el-input__inner) {
   height: 40px;
+}
+
+.login-icon {
+  color: #c7c7c7;
+
+  &:hover {
+    color: #505050;
+  }
 }
 </style>

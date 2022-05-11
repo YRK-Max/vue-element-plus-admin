@@ -14,7 +14,8 @@ export default {
     failure: 'Login Failure',
     welcomBack: 'Welcom Back',
     rememberme: 'Remember Me',
-    findPwd: 'Forget Password'
+    findPwd: 'Forget Password',
+    thirdLogin: 'Third Login'
   },
   logout: 'Logout'
 }
