@@ -18,35 +18,45 @@
     </template>
   </el-dropdown>
 </template>
-<script setup>
+<script>
 import { ElMessageBox } from 'element-plus'
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 import router from '@/router'
-import { computed } from '@vue/runtime-core'
+import { computed, defineComponent } from 'vue'
 import ls from '@/utils/storage'
 
-const store = useStore()
-const route = useRoute()
-const isThirdLogin = ls.get('isThirdLogin')
+export default defineComponent({
+  setup() {
+    const store = useStore()
+    const route = useRoute()
+    const isThirdLogin = ls.get('isThirdLogin')
 
-const avatarUrl = computed(() => { return store.state.user.userInfo.avatarUrl })
-const username = computed(() => { return isThirdLogin ? store.state.user.userInfo['nickName'] : store.state.user.userInfo['username'] })
+    const avatarUrl = computed(() => { return store.state.user.userInfo.avatarUrl })
+    const username = computed(() => { return isThirdLogin ? store.state.user.userInfo['nickName'] : store.state.user.userInfo['username'] })
 
-function handleLogout() {
-  ElMessageBox.confirm('确定退出登录?', '退出登录', {
-    confirmButtonText: 'OK',
-    cancelButtonText: 'Cancel',
-    type: 'warning'
-  })
-    .then(async() => {
-      await store.dispatch('user/logout')
-      router.push(`/login?redirect=${route.fullPath}`)
-    })
-    .catch(() => {
-      // 不做操作
-    })
-}
+    function handleLogout() {
+      ElMessageBox.confirm('确定退出登录?', '退出登录', {
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Cancel',
+        type: 'warning'
+      })
+        .then(async() => {
+          await store.dispatch('user/logout')
+          router.push(`/login?redirect=${route.fullPath}`)
+        })
+        .catch(() => {
+          // 不做操作
+        })
+    }
+
+    return {
+      avatarUrl,
+      username,
+      handleLogout
+    }
+  }
+})
 </script>
 <style lang="scss" scoped>
 </style>
