@@ -1,8 +1,8 @@
 @font-face {
   font-family: "yicon-common"; /* Project id 2583905 */
-  src: url('iconfont.woff2?t=1652087481514') format('woff2'),
-       url('iconfont.woff?t=1652087481514') format('woff'),
-       url('iconfont.ttf?t=1652087481514') format('truetype');
+  src: url('iconfont.woff2?t=1652336442563') format('woff2'),
+       url('iconfont.woff?t=1652336442563') format('woff'),
+       url('iconfont.ttf?t=1652336442563') format('truetype');
 }
 
 .yicon-common {
@@ -14,7 +14,7 @@
 }
 
 .yiconwechat:before {
-  content: "\e695";
+  content: "\e623";
 }
 
 .yiconjia:before {

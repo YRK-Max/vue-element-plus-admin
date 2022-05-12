@@ -1,11 +1,14 @@
 <template>
   <el-dropdown>
-    <div class="flex items-center justify-center h-full px-3 hover:bg-gray-100">
+    <div class="flex items-center justify-center h-full px-3 hover:bg-gray-100 relative">
       <img
         style="border-radius: 50%"
         class="w-[30px] mr-3"
         :src="avatarUrl"
       />
+      <div v-if="isThirdLogin" class="login-type-class absolute bottom-1 left-7 bg-white">
+        <YIcon :color="authTypeColor" :size="13" :icon="authTypeIcon" />
+      </div>
       <label>{{ username }}</label>
     </div>
     <template #dropdown>
@@ -20,6 +23,7 @@
 </template>
 <script>
 import { ElMessageBox } from 'element-plus'
+import YIcon from '@/components/YIcon.vue'
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 import router from '@/router'
@@ -27,12 +31,15 @@ import { computed, defineComponent } from 'vue'
 import ls from '@/utils/storage'
 
 export default defineComponent({
+  components: { YIcon },
   setup() {
     const store = useStore()
     const route = useRoute()
     const isThirdLogin = ls.get('isThirdLogin')
 
     const avatarUrl = computed(() => { return store.state.user.userInfo.avatarUrl })
+    const authTypeColor = computed(() => { return store.state.user.userInfo.authType === 'github' ? '#161b22' : '#41e577' })
+    const authTypeIcon = computed(() => { return store.state.user.userInfo.authType === 'github' ? 'yicongithub' : 'yiconwechat' })
     const username = computed(() => { return isThirdLogin ? store.state.user.userInfo['nickName'] : store.state.user.userInfo['username'] })
 
     function handleLogout() {
@@ -53,10 +60,21 @@ export default defineComponent({
     return {
       avatarUrl,
       username,
+      authTypeColor,
+      authTypeIcon,
+      isThirdLogin,
       handleLogout
     }
   }
 })
 </script>
 <style lang="scss" scoped>
+.login-type-class {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>

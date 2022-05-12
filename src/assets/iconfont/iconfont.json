@@ -6,11 +6,11 @@
   "description": "通用图标库",
   "glyphs": [
     {
-      "icon_id": "809704",
+      "icon_id": "13075010",
       "name": "wechat",
       "font_class": "wechat",
-      "unicode": "e695",
-      "unicode_decimal": 59029
+      "unicode": "e623",
+      "unicode_decimal": 58915
     },
     {
       "icon_id": "1302",

@@ -48,8 +48,8 @@
     <el-form-item class="enter-x">
       <div class="w-full flex justify-around">
         <div class="flex">
-          <YIcon class="login-icon mr-5" :size="26" icon='yicongithub' />
-          <YIcon class="login-icon" :size="22" icon='yiconwechat' @click="handlerWechatLogin" />
+          <YIcon class="login-icon mr-5" :size="26" icon='yicongithub' @click="handlerGithubLogin" />
+          <YIcon class="login-icon" :size="26" icon='yiconwechat' @click="handlerWechatLogin" />
         </div>
       </div>
     </el-form-item>
@@ -77,7 +77,6 @@ const { t } = useI18n()
 const btnLoading = ref(false)
 
 if (route.query.code) {
-  console.log(route.query.code)
   const params = {
     code: route.query.code,
     appkey: 'b16dd5f4',
@@ -134,6 +133,10 @@ function handleLogin() {
 
 function handlerWechatLogin() {
   window.location.href = 'https://api.qauth.cn/qrconnect?appkey=b16dd5f4&state=login'
+}
+
+function handlerGithubLogin() {
+  window.location.href = 'https://api.qauth.cn/oauth?type=github&appkey=b16dd5f4&state=login'
 }
 </script>
 <style lang='scss' scoped>
