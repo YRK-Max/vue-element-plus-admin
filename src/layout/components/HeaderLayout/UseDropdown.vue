@@ -36,11 +36,16 @@ export default defineComponent({
     const store = useStore()
     const route = useRoute()
     const isThirdLogin = ls.get('isThirdLogin')
+    const userInfo = store.state.user.userInfo
 
     const avatarUrl = computed(() => { return store.state.user.userInfo.avatarUrl })
-    const authTypeColor = computed(() => { return store.state.user.userInfo.authType === 'github' ? '#161b22' : '#41e577' })
-    const authTypeIcon = computed(() => { return store.state.user.userInfo.authType === 'github' ? 'yicongithub' : 'yiconwechat' })
-    const username = computed(() => { return isThirdLogin ? store.state.user.userInfo['nickName'] : store.state.user.userInfo['username'] })
+    const authTypeColor = computed(() => {
+      return userInfo.authType === 'github' ? '#161b22' : userInfo.authType === 'qq' ? '#00e6ff' : '#41e577'
+    })
+    const authTypeIcon = computed(() => {
+      return userInfo.authType === 'github' ? 'yicongithub' : userInfo.authType === 'qq' ? 'yiconqq' : 'yiconwechat'
+    })
+    const username = computed(() => { return isThirdLogin ? userInfo['nickName'] : userInfo['username'] })
 
     function handleLogout() {
       ElMessageBox.confirm('确定退出登录?', '退出登录', {

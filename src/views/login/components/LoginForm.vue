@@ -49,7 +49,8 @@
       <div class="w-full flex justify-around">
         <div class="flex">
           <YIcon class="login-icon mr-5" :size="26" icon='yicongithub' @click="handlerGithubLogin" />
-          <YIcon class="login-icon" :size="26" icon='yiconwechat' @click="handlerWechatLogin" />
+          <YIcon class="login-icon mr-5" :size="26" icon='yiconwechat' @click="handlerWechatLogin" />
+          <YIcon class="login-icon" :size="26" icon='yiconqq' @click="handlerQQLogin" />
         </div>
       </div>
     </el-form-item>
@@ -137,6 +138,10 @@ function handlerWechatLogin() {
 
 function handlerGithubLogin() {
   window.location.href = 'https://api.qauth.cn/oauth?type=github&appkey=b16dd5f4&state=login'
+}
+
+function handlerQQLogin() {
+  window.location.href = 'https://api.qauth.cn/oauth?type=qq&appkey=b16dd5f4&state=login'
 }
 </script>
 <style lang='scss' scoped>
