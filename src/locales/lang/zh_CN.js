@@ -6,7 +6,11 @@ export default {
     selfSetting: '个人设置',
     about: '关于',
     editor: 'Layout 设计',
-    layoutEditor: 'Layout 设计'
+    layoutEditor: 'Layout 设计',
+    EqpInfo: '设备信息建模',
+    EqpEvent: '设备事件建模',
+    FabInfo: '工厂信息建模',
+    baseInfo: '数据建模'
   },
   login: {
     title: '用户登录',

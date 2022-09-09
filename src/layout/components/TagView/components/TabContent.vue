@@ -5,8 +5,8 @@
     </span>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item>关闭其他页面</el-dropdown-item>
-        <el-dropdown-item>全部关闭</el-dropdown-item>
+        <el-dropdown-item @click="handleCloseOthers">关闭其他页面</el-dropdown-item>
+        <el-dropdown-item @click="handleCloseAll">全部关闭</el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
@@ -15,7 +15,21 @@
 import { defineComponent } from '@vue/runtime-core'
 
 export default defineComponent({
-  setup() {}
+  // eslint-disable-next-line no-unused-vars
+  setup(props, context) {
+    function handleCloseAll() {
+      context.emit('close-all')
+    }
+
+    function handleCloseOthers() {
+      context.emit('close-others')
+    }
+
+    return {
+      handleCloseAll,
+      handleCloseOthers
+    }
+  }
 })
 </script>
 <style lang="scss" scoped>

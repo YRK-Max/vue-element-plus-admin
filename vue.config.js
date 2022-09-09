@@ -6,15 +6,19 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
 const port = process.env.port || process.env.npm_config_port || 8088
 
 module.exports = defineConfig({
   lintOnSave: true,
-  transpileDependencies: true,
+  // transpileDependencies: true,
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
     name: name,
+    plugins: [
+      new MonacoWebpackPlugin()
+    ],
     resolve: {
       alias: {
         '@': resolve('src'),

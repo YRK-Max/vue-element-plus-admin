@@ -1,8 +1,8 @@
 @font-face {
   font-family: "yicon-common"; /* Project id 2583905 */
-  src: url('iconfont.woff2?t=1652669960683') format('woff2'),
-       url('iconfont.woff?t=1652669960683') format('woff'),
-       url('iconfont.ttf?t=1652669960683') format('truetype');
+  src: url('iconfont.woff2?t=1662615963820') format('woff2'),
+       url('iconfont.woff?t=1662615963820') format('woff'),
+       url('iconfont.ttf?t=1662615963820') format('truetype');
 }
 
 .yicon-common {
@@ -11,6 +11,46 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.yicondaochuexcelmoban:before {
+  content: "\e624";
+}
+
+.yicondaoruexcel:before {
+  content: "\e626";
+}
+
+.yiconicon_mergemodel:before {
+  content: "\e611";
+}
+
+.yiconshebei:before {
+  content: "\e617";
+}
+
+.yiconprofile_light:before {
+  content: "\e7dd";
+}
+
+.yicondept:before {
+  content: "\e620";
+}
+
+.yiconquanxianyuechi:before {
+  content: "\e8a3";
+}
+
+.yiconfenpei:before {
+  content: "\e65d";
+}
+
+.yiconlajitong:before {
+  content: "\e605";
+}
+
+.yiconfenxiang:before {
+  content: "\e602";
 }
 
 .yiconqq:before {
@@ -71,38 +111,6 @@
 
 .yiconsun:before {
   content: "\e6a3";
-}
-
-.yiconabout_guanyu:before {
-  content: "\e60c";
-}
-
-.yiconbank_card_yinhangka:before {
-  content: "\e60d";
-}
-
-.yiconsafety_anquan:before {
-  content: "\e60e";
-}
-
-.yicondownload_xiazai:before {
-  content: "\e60f";
-}
-
-.yiconcollection_shoucang:before {
-  content: "\e610";
-}
-
-.yiconaddress_dizhi:before {
-  content: "\e611";
-}
-
-.yiconorder_dingdan:before {
-  content: "\e613";
-}
-
-.yiconSign_qiandao:before {
-  content: "\e614";
 }
 
 .yicons-fold:before {

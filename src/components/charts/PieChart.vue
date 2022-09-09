@@ -1,9 +1,9 @@
 <template>
-  <div
-    :id="id"
-    class="h-full w-full"
-  />
-</template>
+    <div
+      :id="id"
+      class="h-full w-full"
+    />
+  </template>
 <script>
 import { chartResizeListen } from '@/utils/utils'
 import * as echarts from 'echarts'
@@ -98,3 +98,4 @@ export default defineComponent({
   }
 })
 </script>
+

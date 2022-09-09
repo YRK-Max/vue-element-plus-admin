@@ -6,15 +6,16 @@
           v-for="(page, index) of state.tags.viewdPages"
           :key="index"
           :class="{ 'active': currentRouteName === page.name, 'tags-view-item': true }"
+          @click.right.prevent=""
         >
-          <router-link :to="page">
-            <label style="white-space:nowrap; cursor: pointer">{{ $t('route.' + page.meta.title) }}</label>
-          </router-link>
-          <i
-            v-if="!page.meta.affix"
-            class="yicon-common yiconcancel ml-1 cursor-pointer"
-            @click="handleCloseTag(page)"
-          ></i>
+            <router-link :to="page">
+              <label style="white-space:nowrap; cursor: pointer">{{ $t('route.' + page.meta.title) }}</label>
+            </router-link>
+            <i
+              v-if="!page.meta.affix"
+              class="yicon-common yiconcancel ml-1 cursor-pointer"
+              @click="handleCloseTag(page)"
+            ></i>
         </div>
       </div>
     </ScrollPanel>
@@ -24,7 +25,7 @@
     style="width: 68px"
   >
     <TabRedo />
-    <TabContent />
+    <TabContent @close-all="handleCloseAll" @close-others="handleCloseOthers" />
   </div>
 </template>
 <script>
@@ -59,6 +60,17 @@ export default defineComponent({
         })
     }
 
+    function handleCloseAll() {
+      store.dispatch('tags/delAllPageTag')
+        .then((pages) => {
+          router.push(pages.slice(-1)[0])
+        })
+    }
+
+    function handleCloseOthers() {
+      store.dispatch('tags/delOtherPageTag', currentRouteName)
+    }
+
     function isActive(page) {
       return page.name === route.name
     }
@@ -66,7 +78,9 @@ export default defineComponent({
     return {
       state,
       currentRouteName,
-      handleCloseTag
+      handleCloseTag,
+      handleCloseAll,
+      handleCloseOthers
     }
   }
 })

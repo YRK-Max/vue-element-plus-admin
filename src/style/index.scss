@@ -1,8 +1,40 @@
 :root {
-  --main-color: #426cb9
+  --main-color: #426cb9;
+  --el-border-radius-mid: 5px;
 }
 
 .card-class {
   border-radius: 8px;
   box-shadow: 4px 3px 5px #dedede, 0 0 2px #bbbbbb;
+}
+
+.splitpanes.default-theme .splitpanes__splitter {
+  background: none !important;
+}
+.default-theme.splitpanes--horizontal>.splitpanes__splitter, .default-theme .splitpanes--horizontal>.splitpanes__splitter {
+  height: 10px !important;
+}
+.default-theme.splitpanes--vertical>.splitpanes__splitter, .default-theme .splitpanes--vertical>.splitpanes__splitter {
+  width: 10px !important;
+}
+.splitpanes.default-theme .splitpanes__pane {
+  background: none !important;
+}
+body ::-webkit-scrollbar, html ::-webkit-scrollbar {
+  width: 12px !important;
+  height: 12px !important;
+  background-color: transparent;
+}
+body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
+  border-radius: 5px !important;
+  background-color: #bfbfbf;
+}
+
+.el-card__header {
+  padding: 10px !important;
+  font-weight: bold;
+}
+
+.el-menu--popup {
+  border-radius: var(--el-border-radius-mid) !important;
 }

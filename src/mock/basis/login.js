@@ -18,16 +18,28 @@ const UserInfo = {
 
 const AccessPermissions = [
   {
-    path: '/editor',
-    name: 'LayoutEditorLayout',
+    path: '/baseInfo',
+    name: 'baseInfo',
     component: 'layout',
-    redirect: '/editor/editor',
+    meta: { title: 'baseInfo', icon: 'yiconicon_mergemodel' },
     children: [
       {
-        path: 'editor',
-        name: 'LayoutEditor',
-        component: 'modules/LayoutEditor',
-        meta: { title: 'layoutEditor', icon: 'yiconeditor' }
+        path: 'fab',
+        name: 'fab',
+        component: 'baseInfo/FabInfo',
+        meta: { title: 'FabInfo' }
+      },
+      {
+        path: 'eqp',
+        name: 'eqp',
+        component: 'baseInfo/EqpInfo',
+        meta: { title: 'EqpInfo' }
+      },
+      {
+        path: 'eqpEvent',
+        name: 'eqpEvent',
+        component: 'baseInfo/EqpEventInfo',
+        meta: { title: 'EqpEvent' }
       }
     ]
   },
@@ -48,6 +60,20 @@ const AccessPermissions = [
         name: 'selfSetting',
         component: 'system/SettingsPage',
         meta: { title: 'selfSetting' }
+      }
+    ]
+  },
+  {
+    path: '/editor',
+    name: 'LayoutEditorLayout',
+    component: 'layout',
+    redirect: '/editor/editor',
+    children: [
+      {
+        path: 'editor',
+        name: 'LayoutEditor',
+        component: 'modules/LayoutEditor',
+        meta: { title: 'layoutEditor', icon: 'yiconeditor' }
       }
     ]
   },

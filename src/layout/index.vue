@@ -147,20 +147,4 @@ export default {
   width: 100%;
   overflow: auto;
 }
-.content-router-view::-webkit-scrollbar {
-  width: 9px;
-  height: 9px;
-}
-.content-router-view::-webkit-scrollbar-track {
-  background: transparent;
-}
-.content-router-view::-webkit-scrollbar-thumb {
-  background-color: rgba(155, 155, 155, 0.5);
-  border-radius: 20px;
-  border: transparent;
-
-  &:hover {
-    background-color: #929292;
-  }
-}
 </style>

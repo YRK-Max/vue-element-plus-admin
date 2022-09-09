@@ -8,12 +8,18 @@ import 'windi.css'
 import App from './App.vue'
 // 引入图标库
 import './assets/iconfont/iconfont.css'
+// 引入 splitpanes 的样式库
+import 'splitpanes/dist/splitpanes.css'
 // 国际化
 import VueI18n from './locales'
 // permission.js 主要处理页面跳转，权限检查相关工作
 import './permission'
 import router from './router'
 import store from './store'
+// vxe-table
+import 'xe-utils'
+import VXETable from 'vxe-table'
+import 'vxe-table/lib/style.css'
 
 // 开启mock, 如不需要则删掉此行，关闭mock需要卸载mockjs，删掉src/mock，调整proxy至真实后端
 require('./mock')
@@ -23,4 +29,5 @@ app.use(VueI18n)
 app.use(ElementPlus)
 app.use(router)
 app.use(store)
+app.use(VXETable)
 app.mount('#app')

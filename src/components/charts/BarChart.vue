@@ -1,9 +1,9 @@
 <template>
-  <div
-    :id="id"
-    class="h-full w-full"
-  />
-</template>
+    <div
+      :id="id"
+      class="h-full w-full"
+    />
+  </template>
 <script>
 import { chartResizeListen } from '@/utils/utils'
 import * as echarts from 'echarts'
@@ -16,18 +16,31 @@ export default defineComponent({
       type: Array,
       default: () => { return ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] }
     },
-    legend: {
-      type: Array,
-      default: () => { return ['clones'] }
-    },
     series: {
       type: Array,
       default: () => {
         return [
           {
-            name: 'clones',
+            name: 'clone1',
             data: [150, 230, 224, 218, 135, 147, 260],
-            type: 'line'
+            type: 'bar',
+            barMaxWidth: 20,
+            itemStyle: {
+              normal: {
+                barBorderRadius: [8, 8, 0, 0]
+              }
+            }
+          },
+          {
+            name: 'clone2',
+            data: [234, 420, 152, 248, 456, 263, 352],
+            type: 'bar',
+            barMaxWidth: 20,
+            itemStyle: {
+              normal: {
+                barBorderRadius: [8, 8, 0, 0]
+              }
+            }
           }
         ]
       }
@@ -73,7 +86,6 @@ export default defineComponent({
           trigger: 'axis'
         },
         legend: {
-          data: props.legend,
           left: '3%'
         },
         xAxis: {
@@ -98,3 +110,4 @@ export default defineComponent({
   }
 })
 </script>
+
